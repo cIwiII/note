@@ -1,0 +1,31 @@
+张瑞
+
+
+quit返回系统命令  exit()退出shell
+C：切回c盘     cd..返回上级目录    cd/返回根目录   cls清空
+ctrl+c终止脚本
+
+pwd：打印工作目录(当前路径)
+hostname计算机名称  mkdir创建文件
+cd更改目录   ls 列出文件目录
+rmdir/rm 删除目录或文件
+{pushd推送目录  popd 弹出目录}
+cp复制(加有-recurse是完整复制，不加只是复制文件夹而没有其中的文件) 
+robocopy更可靠的复制
+mv移动文件(重命名)cat流文件内容显示
+more逐 页 查看文件
+type打印整个文件
+new-itm 创建空文件
+例new-itm a.txt -type file#文件/directory文件夹
+
+
+#(octothorpe/pound character)可以称为pound(英镑符)、hash(电话的#键)、mesh(网)
+下划线：(underscore)在变量中用作假象的空格来隔开单词
+format函数：格式化的一种，输出为变量名的值，格式为"a b c ."format(*),另一种为“f-string”格式为f"a b c {*}"（*为变量名）
+\n:为换行
+
+path：是windows操作系统环境变量，作用是在命令窗口执行一个命令则在设置目录下依次寻找命令或者对应的文件，找到则执行，未找到则命令窗口返回无效命令。
+浮点数：20.0就是一个浮点数
+变量(variable)：变量是用来代替某个东西的名字，也就是一个称呼或命名。
+
+

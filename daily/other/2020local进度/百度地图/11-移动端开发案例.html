@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        html{
+            font-size: 10px;
+        }
+        body{
+            background-color: #f3f3f3;
+        }
+        .header {
+            width: 100vw;
+            height: 3rem;
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+        }
+        .back{
+            width: 3rem;
+            height: 2.4rem;
+            /* background-color: blue; */
+            background-image: url(./img/header-icon.png);
+            background-size: 3rem;
+            background-position: 0.5rem -22.2rem;
+        }
+        .title{
+            /* background-color: red; */
+            /* width: 10rem; */
+            flex-grow: 1;
+            height: 3rem;
+            text-align: center;
+            line-height: 3rem;
+        }
+
+        .menu{
+            width: 100vw;
+            height: 21rem;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .top{
+            width: 96%;
+            height: 2.5rem;
+            background-color: blue;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            line-height: 2.5rem;
+            padding-left: 2rem;
+            box-sizing: border-box;
+        }
+        .middle{
+            width: 96%;
+            height: 16rem;
+            background-color: bisque;
+        }
+        .bottom{
+            width: 96%;
+            height: 2.5rem;
+            background-color: blueviolet;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            text-align: center;
+            line-height: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="back"></div>
+        <div class="title">车主服务</div>
+    </div>
+    <div class="menu">
+        <div class="top">常用服务</div>
+        <div class="middle"></div>
+        <div class="bottom">查看更多</div>
+    </div>
+</body>
+
+</html>

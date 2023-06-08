@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Human{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            eat(foodName){
+                console.log(`${this.name}正在吃${foodName}~`);
+            }
+            sleep(){
+                console.log(`${this.name}正在睡觉~`);
+            }
+        }
+
+        // 1、按要求定义类，并创建对象调用函数进行测试
+        // 学生类，具有姓名、年龄、学号、学历属性，吃饭、睡觉、学习、参加考试行为；
+        class Student extends Human{
+            constructor(name,age,no,education){
+                // this.name=name;
+                // this.age=age;
+                super(name,age);
+                this.no=no;
+                this.education=education;
+            }
+            study(content){
+                console.log(`${this.name}正在学习${content}~`);
+            }
+            test(content){
+                console.log(`${this.name}正在参加${content}测试~`);
+            }
+        }
+        // 教师类，具有姓名、年龄、教龄、工资属性，吃饭、睡觉、监考、授课行为；
+        class Teacher extends Human{
+            constructor(name,age,teachingAge,salary){
+                super(name,age);
+                this.teachingAge=teachingAge;
+                this.salary=salary;
+            }
+            invigilate(content){
+                console.log(`${this.name}正在监考${content}~`);
+            }
+            teach(content){
+                console.log(`${this.name}正在授课${content}~`);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

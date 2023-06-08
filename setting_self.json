@@ -1,0 +1,162 @@
+{
+  //字体大小，单位像素，默认14
+  "editor.fontSize": 14,
+  //tab键
+  "editor.tabSize": 2,
+  //右侧缩略图宽度，单位像素
+  "editor.minimap.maxColumn": 30,
+  //缩略图显示比列123
+  "editor.minimap.scale": 1,
+  // 字体控制
+  "editor.fontFamily": "Dank Mono, Menlo, Monaco, 'Courier New', monospace",
+
+  // 是否显示右侧快速预览
+  "editor.minimap.enabled": true,
+  //设置代码行高
+  "editor.lineHeight": 20,
+  // 启用/禁用导航路径
+  "breadcrumbs.enabled": true,
+
+  // 自动保存
+  "files.autoSave": "afterDelay",
+  // 保存延迟1s
+  "files.autoSaveDelay": 1,
+  // 文件名满足指定正则采用的语言模式
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.vue": "vue",
+    ".babelrc": "javascript",
+    "*.art": "html",
+    "*.json": "jsonc" // "json"：不可注释
+  },
+  //vue设置tab宽度  22
+  "vetur.format.options.tabSize": 2,
+  //js格式化，但不自动换行"vscode-typescript",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  //输入文本按下tab转为标签
+  "emmet.triggerExpansionOnTab": true,
+  // 文件移动位置更新
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // 文件拖拽是否需要确认
+  "explorer.confirmDragAndDrop": true,
+  // 文件删除是否需要确认
+  "explorer.confirmDelete": true,
+  //   是否可鼠标缩放编辑器
+  "editor.mouseWheelZoom": true,
+  "editor.rulers": [80, 120], //编辑器标尺提示
+  // 要在保存时运行的代码操作种类。
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "addMissingImports": true,
+    //
+    "source.fixAll.eslint": true,
+    "source.fixAll.styleslint": true,
+    "source.fixAll.tslint": true
+  },
+  "editor.tokenColorCustomizations": {
+    // "comments": "#99f291c8", // 注释
+    // "keywords": "#9d7abd", // 关键字
+    // "variables": "#f1ec67", // 变量名
+    // "strings": "#be9735", // 字符串
+    // "functions": "#0dec62fc", // 函数名
+    // "numbers": "#81c9f3" // 数字
+  },
+
+  // 默认格式化程序
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  //   编辑器缩放比
+  "window.zoomLevel": -1,
+
+  // 若设置为 true，则自动从当前 Git 仓库的默认远程仓库提取提交。若设置为“全部”，则从所有远程仓库进行提取。
+  "git.autofetch": true,
+
+  //cmd服务器打开
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+
+  //html标签属性换行
+  "html.format.wrapAttributes": "aligned-multiple",
+  //指定vue-html格式化工具，
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  //vetur插件,html标签的属性是否换行
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      //超出长度折行
+      "wrap_attributes": "aligned-multiple",
+      //长度限制
+      "wrap_line_length": 120
+    }
+  },
+  "workbench.iconTheme": "vscode-icons",
+
+  "minapp-vscode.disableAutoConfig": true,
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.startupEditor": "none",
+  "grunt.autoDetect": "on",
+  // 覆盖当前所选颜色主题的颜色
+  "workbench.colorCustomizations": {
+    // "editor.background": "#ff0000"
+  },
+
+
+  // 超过最大值换行
+  "prettier.printWidth": 120,
+  //句尾添加分号
+  "prettier.semi": true,
+  // 箭头函数参数只有一个是否要有小括号。avoid：省略括号, "always"
+  "prettier.arrowParens": "avoid",
+  // 对象花括号内的两旁添加空格 "{ foo: bar }"
+  "prettier.bracketSpacing": true,
+  //对象字面量项尾不能有逗号，指定添加尾后逗号的方式。选项：none──无尾后逗号、 es5──在 ES5 中有效的尾后逗号（如对象与数组等）、 all──尽可能添加尾后逗号（如函数参数）
+  "prettier.trailingComma": "none",
+  // HTML元素（包括 JSX 等）具有多个属性，将 > 放在最后一个属性后，,默认false
+  "prettier.bracketSameLine": true,
+  // 使用单引号，而不是双引号，默认 false
+  "prettier.singleQuote": false,
+  // 在jsx中:单引号代替双引号
+  "prettier.jsxSingleQuote": true,
+  // 是否启用调试日志
+  "prettier.enableDebugLogs": false,
+  // 是否对引号中代码使用智能格式化
+  "prettier.embeddedLanguageFormatting": "auto", // auto | off
+  // Markdown 文本的换行方式 alway超出换行，never 不换行，默认 preserve 保持原样
+  "prettier.proseWrap": "preserve",
+  // 是否使用上述prettier配置
+  "prettier.useEditorConfig": true,
+  // html 的属性是否单独放一行，
+  "prettier.singleAttributePerLine": false,
+  // 指定文件的结尾换行符, "auto", "lf", "crlf", "cr"
+  "prettier.endOfLine": "lf",
+  // 指定 HTML 元素是在「内容内换行」还是在「属性与右尖括号内换行」，前者可能导致内联元素渲染出额外的空格。选项： css ──块级元素采用前者，内联元素采用后者、 strict ──全部采用后者、 ignore──全部采用后者
+  "prettier.htmlWhitespaceSensitivity": "css",
+  // 格式化的同时自动插入 @format 的特殊注释，以表示该文件已被 Prettier 格式化过
+  "prettier.insertPragma": false,
+  // 指定对象中 key 的引号添加方式。选项： as-needed──只有在需求要的情况下加引号、 consistent──有一个需要引号就给其他都统一加上、 preserve──保留用户输入的引号
+  "prettier.quoteProps": "as-needed",
+  // 只对在开头含有特定注释（如 @format ）的文件进行格式化
+  "prettier.requirePragma": false,
+  // 指定一个制表符等于的空格数
+  "prettier.tabWidth": 2,
+  // 使用 Tab 缩进，而不是空格缩进
+  "prettier.useTabs": false,
+  // 缩进 Vue 的 <script> 和 <style> 标签。
+  "prettier.vueIndentScriptAndStyle": false,
+
+  // 重写 ESLint 警告级别，低于项目规则 warn 警告(带波浪线) off:关闭, error ：异常
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn"
+    }
+  ],
+  // tabnine 插件智能提示，当前106-163结束，230309
+  "tabnine.experimentalAutoImports": true
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    
+        function demo() {
+            console.log(1);
+            console.log(2);
+            // let a = 1;
+            // return;
+            try {
+                console.log(a);
+                // console.log(5);
+            } catch (e) {
+                console.log('异常发生');
+                console.log(e.name);
+                console.log(e.message);
+                console.log(e.stack);
+                console.error(e.stack);
+            } finally {
+
+                console.log('finally执行');
+            }
+            console.log(3);
+            console.log(4);
+        }
+
+        //工具制造者
+        function sum(){
+            let re=0;
+            for(let n of arguments){
+                if((typeof n) != "number"){
+                    throw new TypeError('每个累加的实参必须为number类型!');
+                }
+                // console.log(typeof n);
+                re+=n;
+            }
+            return re;
+        }
+
+        //练习:定义nextInt(start,end)函数，实现获取一个指定范围内(取前不取后)的整数，要求start和end必须是number型，且start必须小于end，
+        //否则抛出TypeError或RangeError,并提供相应错误提示
+        function nextInt(start,end){
+            if((typeof start)!='number' || (typeof end)!='number'){
+                throw new TypeError('起始和结束区间实参必须为number类型!');
+            }
+            if(start>=end){
+                throw new RangeError('结束区间实参值必须大于起始区间实参值!')
+            }
+            return Math.floor(Math.random()*(end-start))+start;
+        }
+
+        class DemoError extends Error{
+            constructor(mes){
+                super(mes);
+                this.name='DemoError';
+            }
+        }
+
+        // 1、自定义正则检查工具类`RegexUtil`，其中有手机号正则类属性，和检查指定字符串是否符合手机号正则功能的函数，如果传入的参数不是字符串，
+        // 抛出`RegexError`对象，异常提示信息为`正则判断目标类型不是字符串。`。
+        class RegexError extends Error{
+            constructor(mes){
+                super(mes);
+                this.name='RegexError';
+            }
+        }
+        class RegexUtil{
+            static telReg=/^1[3-9]\d{9}$/;
+            static checkTel(str){
+                if((typeof str)!='string'){
+                    throw new RegexError('正则判断目标类型不是字符串。');
+                }
+                return this.telReg.test(str);
+            }
+        }
+
+        // RegexUtil.checkTel('123');
+        // 2、自定义文件上传工具类`UploadUtil`，其中有上传图片的函数、上传视频的函数，上传时需要传入文件路径， 如果路径不是上传目标的合法路径，
+        // 则抛出`UploadError`异常，并提示`路径不是合法图片`或`路径不是合法视频`。
+        class UploadError extends Error{
+            constructor(mes){
+                super(mes);
+                this.name='UploadError';
+            }
+        }
+        class UploadUtil{
+            static uploadPicture(path){
+                let picReg=/\.(png)|(jpg)|(gif)|(jpeg)$/;
+                if(!picReg.test(path)){
+                    throw new UploadError('路径不是合法图片~');
+                }
+                //上传代码
+                console.log('上传中~');
+            }
+            static uploadVideo(path){
+                let videoReg=/\.(mp4)|(wav)|(av)|(avi)$/;
+                if(!videoReg.test(path)){
+                    throw new UploadError('路径不是合法视频~');
+                }
+                //上传代码
+                console.log('上传中~');
+            }
+        }
+        UploadUtil.uploadVideo('a.av');
+    </script>
+</head>
+
+<body>
+    <input type="file">
+</body>
+
+</html>

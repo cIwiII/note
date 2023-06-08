@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 单选框 -->
+    <input type="radio" name="gender" value="男">男
+    <input type="radio" name="gender" value="女" checked>女
+
+    <br />
+    <!-- 多选框 -->
+    <input type="checkbox" name="language" value="HTML" checked>HTML
+    <input type="checkbox" name="language" value="CSS" checked>CSS
+    <input type="checkbox" name="language" value="JavaScript">JavaScript
+    <input type="checkbox" name="language" value="Java">Java
+    <input type="checkbox" name="language" value="Python">Python
+
+    <br />
+    <!-- 下拉 -->
+    <select name="province">
+        <option>四川省</option>
+        <option>云南省</option>
+        <option selected>贵州省</option>
+        <option>湖南省</option>
+    </select>
+    <select name="city">
+        <option>成都市</option>
+        <option>绵阳市</option>
+        <option>资阳市</option>
+        <option>南充市</option>
+        <option>达州市</option>
+        <option>乐山市</option>
+    </select>
+
+    <input type="button" value="全选" onclick="selectAll()">
+    <input type="button" value="全不选" onclick="notSelect()">
+    <input type="button" value="反选" onclick="reverseSelect()">
+    <input type="button" value="获取选中值" onclick="getSelectValue()">
+
+    <script>
+        //获取目标单选框元素
+        var radioEle=document.querySelectorAll('[name="gender"]')[1];
+        //选中
+        // radioEle.checked=true;
+        radioEle.checked=false;
+        function reverseSelect(){
+            //获取目标多选框Element对象
+            var checkBoxEleArray = document.querySelectorAll('[name="language"]');
+            for (var checkBox of checkBoxEleArray) {
+                //获取选中状态
+                var selectState=checkBox.checked;
+                // console.log(selectState);
+                if(selectState){
+                    checkBox.checked=false;
+                }else{
+                    checkBox.checked=true;
+                }
+            }
+        }
+        function selectAll() {
+            //获取目标多选框Element对象
+            var checkBoxEleArray = document.querySelectorAll('[name="language"]');
+            for (var checkBox of checkBoxEleArray) {
+                // console.log(checkBox);
+                //设置全选
+                checkBox.checked=true;
+                //全不选
+                // checkBox.checked = false;
+            }
+        }
+        function notSelect() {
+            //获取目标多选框Element对象
+            var checkBoxEleArray = document.querySelectorAll('[name="language"]');
+            for (var checkBox of checkBoxEleArray) {
+                // console.log(checkBox);
+                //设置全选
+                // checkBox.checked=true;
+                //全不选
+                checkBox.checked = false;
+            }
+        }
+
+
+        //下拉的选中控制
+        //获取目标option元素Element
+        // var optionEle=document.querySelector('[name="province"]').children[1];
+        //选中
+        // optionEle.selected=true;
+        //未选中
+        // optionEle.selected=false;
+        //获取选中状态
+        // console.log(optionEle.selected);
+
+        //获取select选中的值
+        function getSelectValue(){
+            var provinceOptionEleArray=document.querySelector('[name="province"]').children;
+            for(var provinceOptionEle of provinceOptionEleArray){
+                if(provinceOptionEle.selected){
+                    console.log(provinceOptionEle.value);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

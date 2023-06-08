@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title,
+        .content,
+        #delete-btn {
+            width: 1000px;
+            margin: auto;
+            display: flex;
+        }
+
+        #delete-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            height: 30px;
+        }
+
+        .content {
+            height: 600px;
+        }
+
+        .content>div,
+        .title>div {
+            flex: 1;
+            /* background-color: blue; */
+            border: 1px solid #ccc;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .title>div {
+            font-size: larger;
+            font-weight: bold;
+            line-height: 30px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        .content>div>div,
+        .title>div>div {
+            width: 80px;
+            height: 80px;
+            border: 1px solid green;
+            margin: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <div>待删除区</div>
+        <div>删除区</div>
+    </div>
+    <div class="content">
+        <div id="delete">
+            <div id="i1" draggable="true">1</div>
+            <div id="i2" draggable="true">2</div>
+            <div id="i3" draggable="true">3</div>
+            <div id="i4" draggable="true">4</div>
+            <div id="i5" draggable="true">5</div>
+            <div id="i6" draggable="true">6</div>
+            <div id="i7" draggable="true">7</div>
+            <div id="i8" draggable="true">8</div>
+            <div id="i9" draggable="true">9</div>
+        </div>
+        <div id="deleted">
+
+        </div>
+    </div>
+    <input type="button" class="btn btn-default" value="删除" id="delete-btn">
+    <script>
+        //绑定拖拽开始事件
+        document.querySelector('.content').ondragstart = function (event) {
+            //将拖拽目标存储
+            event.dataTransfer.setData('dragEleId', event.target.id);
+        }
+        //绑定拖拽悬浮事件
+        document.querySelector('.content').ondragover = function (event) {
+            //阻止默认行为
+            event.preventDefault();
+        }
+        //绑定拖拽释放事件
+        document.querySelector('.content').ondrop = function (event) {
+            // console.log('释放');
+            //获取拖拽目标
+            var dragEleId = event.dataTransfer.getData('dragEleId');
+            // console.log(dragEleId);
+            var dragEle = document.querySelector('#' + dragEleId);
+            // console.log(dragEle);
+            //获取内容
+            // var dragEleText=dragEle.innerText;
+            // //移除待删除区div
+            // dragEle.remove();
+            // //添加到删除区
+            // event.target.innerHTML+=`<div id="i${dragEleText}" draggable="true">${dragEleText}</div>`;
+
+            if (event.target.id == 'deleted' || event.target.id == 'delete') {
+                //添加到待删除区域
+                event.target.appendChild(dragEle);
+            }
+        }
+        document.querySelector('#delete-btn').onclick = function () {
+            document.querySelector('#deleted').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

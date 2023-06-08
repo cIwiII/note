@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            top: calc( 50% - 100px) ;
+            left: calc( 50% - 100px);
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+            /* transform: translateY(-200px); */
+            margin-top: -100px;
+            margin-left: 50px;
+            height: 100px;
+            transform: skew(-45deg);
+        }
+        .blue{
+            background-color: blue;
+            /* transform: translateX(200px); */
+            width: 100px;
+            margin-left: 200px;
+            margin-top: -50px;
+            transform: skewY(-45deg);
+            transition: transform 3s;
+        }
+        .blue:hover{
+            /* 转换的复合属性 */
+            transform: translateX(100px) skewY(-45deg);
+            /* 转换改变轴的方向 */
+        }
+        .line-behind{
+            /* background-color:pink; */
+            transform: translate(100px , -100px);
+            border-left: 2px dashed #ffffff;
+            border-bottom: 2px dashed #ffffff;
+        }
+        .line-bottom{
+            /* background-color:pink; */
+            
+            transform: skewX(-45deg);
+            height: 100px;
+            width: 100px;
+            margin-top: 100px;
+            margin-left: 50px;
+            border-left: 2px dashed #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="blue"></div>
+    <div class="line-behind"></div>
+    <div class="line-bottom"></div>
+</body>
+</html>

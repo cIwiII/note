@@ -1,0 +1,106 @@
+
+/* 
+属性关系；按顺序进行，属性很好用，但目前存在一定兼容性
+grid{
+    grid-template{ 
+        grid-template-rows  row和columns用"/"分割
+        grid-template-columns
+        grid-template-areas //单独名字布局  某种程度上而言 grid-template = grid-template-areas;
+    }
+    grid-auto-rows
+    grid-auto-columns
+    grid-auto-flow
+}
+grid-area{
+    grid-column{
+        grid-column-start
+        grid-column-end
+    }
+    grid-row{
+        grid-row-start
+        grid-row-end
+    }
+}
+grid-gap{
+    grid-row-gap
+    grid-column-gap
+}
+*/
+
+.grid-container {
+    /* 制作第一列 150 像素高的三列网格布局： 使用网页模板时grid-template = grid-template-areas */
+    grid: 150px / auto auto auto;
+    grid-template: 150px / auto auto auto;
+
+    /* 使命名项目 "myArea" 在五列网格布局中横跨两列： */
+    grid-template-areas: "myArea myArea . . .";
+
+    /* 规定两行，其中 "item1" 横跨前两行中的前两列（在一个五列网格布局中）： */
+    grid-template:
+    //grid-template-areas:
+        'myArea myArea . . .'
+        'myArea myArea . . .';
+    /* 命名所有项目，然后制作一张现成的网页模板： */
+    grid-template:
+    //grid-template-areas:
+        'header header header header header header'
+        'menu main main main right right'
+        'menu footer footer footer footer';
+
+
+    .item1 { grid-area: myArea;}
+    .item1 { grid-area: header; }
+    .item2 { grid-area: menu; }
+    .item3 { grid-area: main; }
+    .item4 { grid-area: right; }
+    .item5 { grid-area: footer; }
+
+    /* 对应列数的宽度，之间空格隔开 */
+    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 30px 200px auto 100px;
+    /* 对应行数的高度，之间空格隔开 */
+    grid-template-rows: 100px 300px;
+
+    /* 为网格中的列设置默认尺寸：该属性只会影响未设置尺寸的列。 grid-auto-columns: auto|max-content|min-content|length;*/
+    grid-auto-columns: 50px;
+    /* 控制自动放置的项目如何插入网格中。 grid-auto-flow: row|column|dense|row dense|column dense; */
+    grid-auto-flow: column;
+    /* 属性为网格容器中的行设置尺寸,该属性只会影响未设置尺寸的行。 grid-auto-rows: auto|max-content|min-content|length; */
+    grid-auto-rows: 150px;
+}
+
+.item1 {
+    /* 使 "item1" 在行 2 列 1 开始，并横跨两行三列,值顺序： 行开 / 列开 / 行尾(跨行数) / 列尾(跨列数) */
+    grid-area: 2 / 1 / span 2 / span 3;
+    grid-area: myArea;
+
+    /* 使 "item1" 在列 1 开始并横跨两列：两种写法 列线值 */
+    grid-column: auto / auto;
+    grid-column: 1 / span 2;
+    grid-column: 1 / 3;
+    /* 使 "item1" 从列 2 开始 */
+    grid-column-start: 2;
+    grid-column-start: span 2;
+    /* 使 "item1" 横跨三列：列线值 */
+    grid-column-end: span 3;
+    grid-column-end: 3;
+    
+    /* 使 "item1" 在行 1 开始并横跨两行：行线值 */
+    grid-row: 1 / span 2;
+    grid-row: 1 / 3;
+    /* 使 "item1" 从行 2 开始 行开始没有线值 */
+    grid-row-start: 2;
+    /* 使 "item1" 横跨三行： 行线值 */
+    grid-row-end: span 3;
+    grid-row-end: 3;    
+}
+
+.grid-container {
+    /* 行列间隙，行与行，列与列之间为50，行间隙20，列间隙50，默认0*/
+    grid-gap: 50px;
+    grid-gap: 20px 50px;
+    /* 像素或百分比*/
+    grid-column-gap: 50px;
+    /* 像素或百分比*/
+    grid-row-gap: 50px;
+}

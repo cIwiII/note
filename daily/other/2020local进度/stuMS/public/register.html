@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#regForm').on('submit',function(event){
+                //阻止默认提交行为
+                event.preventDefault();
+                //两个密码一致
+                if($('#pwd').val()!=$('#rpwd').val()){
+                    alert('两次密码不一致!');
+                    return;
+                }
+                $.ajax({
+                    url:'/user/reg',
+                    type:'post',
+                    data:{
+                        acc:$('#acc').val(),
+                        pwd:$('#pwd').val()
+                    },
+                    success:function(data){
+                        alert(data.message);
+                        if(data.code==200){
+                            location.href='login.html';
+                        }
+                    }
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+    <form action="/user/reg" method="post" id="regForm">
+        <label for="acc">账号:</label>
+        <input type="text" id="acc" name="acc" placeholder="请输入11位手机号">
+        <br/>
+        <label for="pwd">密码:</label>
+        <input type="password" id="pwd" name="pwd" placeholder="请输入6~12位数字或字母">
+        <br/>
+        <label for="rpwd">确认密码:</label>
+        <input type="password" id="rpwd" name="rpwd" placeholder="请输入6~12位数字或字母">
+        <br/>
+        <input type="submit">
+    </form>
+</body>
+</html>

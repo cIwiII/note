@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>题1</p>
+    <script>
+
+        // 定义一个函数 simplePoller 接收一个 queryFn 回调函数和一个 callback 回调函数
+        // 如果 queryFn 返回true 执行 callback，
+        // 如果 queryFn 返回false 等待一段时间，然后再次调用 queryFn ，直到queryFn返回true
+
+        //  queryFn调用之间的等待间隔从1秒开始每次增加1.5倍
+        // 当queryFn返回true时，调用回调并退出函数
+        // 应该允许并发调用simplePoller，函数的调用不会相互干扰
+
+        // 即实现一个简单的轮询
+        function simplePoller(queryFn = () => { }, callback = () => { }) {
+            // 初始间隔时间(ms)
+            let baseTime = 1000;
+            // 等待时间的增长倍率
+            let timeRate = 1.5;
+
+            let timeHandler = (time) => {
+                setTimeout(() => {  //成功不需要延时，将延时放里面
+                    let res = queryFn();
+                    if (res === true) {
+                        callback();
+                    } else if (res === false) {
+                        // 等待时间按倍率增加，向上取整，去除时间小数
+                        time = Math.ceil(time * timeRate);
+                        timeHandler(time);
+                    } else {
+                        console.error('queryFn 函数必须返回一个boolean值');
+                    }
+                }, time)
+            }
+            timeHandler(baseTime);
+        }
+
+
+        // ok
+        function queryFn(t,num) {
+            if (num == 6) {
+                return true
+            }
+            console.log(`延时${t}ms`)
+            return false
+        }
+        function test() {
+            console.log("完毕")
+        }
+        function simplePollers(fn, callback) {
+            let num = 1
+            var time = 1000
+                function muti() {
+                    if (fn(time,num)) {
+                        callback()
+                    } else {
+                        setTimeout(() => {
+                            return muti()
+                        }, time)
+                    }
+                    num++
+                    time *= 1.5
+                }
+                muti();
+        }
+        simplePollers(queryFn, test)
+    </script>
+
+</body>
+
+</html>

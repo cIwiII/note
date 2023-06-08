@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+             /* 激活3D空间 */
+             perspective: 400px;
+        }
+        .box {
+            width: 600px;
+            height: 600px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+        }
+       .box div{
+            width:200px;
+            height: 200px;
+            background-color: aquamarine;
+            opacity: 0.5;
+            position: fixed;
+            margin:auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .box .top{
+            transform-origin: center top;
+            transform: rotateX(90deg);
+            background-color: red;
+        }
+        .box .bottom{
+            transform-origin: center bottom;
+            transform: rotateX(-90deg);
+            background-color: green;
+        }
+        .box .left{
+            transform-origin: left center;
+            transform: rotateY(-90deg);
+            background-color: blue
+        }
+        .box .right{
+            transform-origin: right center;
+            transform: rotateY(90deg);
+            background-color: orange
+        }
+        .box  .front{
+            transform: translateZ(200px);
+            background-color: pink
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">1</div>
+        <div class="bottom">2</div>
+        <div class="left">3</div>
+        <div class="right">4</div>
+        <div class="behind">5</div>
+        <div class="front">6</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+.page {
+  display: flex;
+
+  option {
+    border: 1px solid #DDDDDD;
+    margin: 0 5px;
+    padding: 2px 9px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+    }
+
+    &.active {
+      color: #fff;
+      background-color: #ec6c00;
+
+      &:hover {
+        cursor: default;
+        background-color: #428bca;
+        border-color: #428bca;
+      }
+    }
+
+    &.disabled {
+      cursor: no-drop;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}

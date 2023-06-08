@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+</head>
+
+<body>
+    <p>当前位置是：</p>
+    <div id="demo"></div>
+    <script>
+
+        var x = document.getElementById("demo");
+
+        // 成功执行
+        function showPosition(position) {
+            x.innerHTML = "纬度: " + position.coords.latitude +
+                "<br>经度: " + position.coords.longitude;
+        }
+        // 错误执行
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "用户拒绝对获取地理位置的请求。"
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "位置信息是不可用的。无法获取当前位置"
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "请求用户地理位置超时。"
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "未知错误。"
+                    break;
+            }
+        }
+        function getLocation() {
+            console.log(navigator);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+            else {
+                x.innerHTML = "该浏览器不支持获取地理位置。";
+            }
+        }
+        getLocation();
+
+        /* 
+        getCurrentPosition() 方法 - 返回数据
+        若成功，则 getCurrentPosition() 方法返回对象。始终会返回 latitude、longitude 以及 accuracy 属性。
+        如果可用，则会返回其他下面的属性。
+        coords.latitude	    十进制数的纬度
+        coords.longitude	十进制数的经度
+        coords.accuracy	    位置精度
+        coords.altitude	    海拔，海平面以上以米计
+        coords.altitudeAccuracy	   位置的海拔精度
+        coords.heading	    方向，从正北开始以度计
+        coords.speed	    速度，以米/每秒计
+        timestamp	        响应的日期/时间
+
+        watchPosition() - 返回用户的当前位置，并继续返回用户移动时的更新位置（就像汽车上的 GPS）。
+        clearWatch() - 停止 watchPosition() 方法
+        */
+        // 下面的例子展示 watchPosition() 方法。您需要一台精确的 GPS 设备来测试该例（比如 iPhone）：
+        var x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition);
+            }
+            else {
+                x.innerHTML = "该浏览器不支持获取地理位置。";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "纬度: " + position.coords.latitude +
+                "<br>经度: " + position.coords.longitude;
+        }
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

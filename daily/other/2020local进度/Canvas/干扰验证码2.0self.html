@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        window.onload = function () {
+            document.querySelector('body').onclick = function () {
+                this.innerHTML = '<canvas style="border:1px dashed red ;" width="500px" height="300px"></canvas>';
+                var can = document.querySelector('canvas').getContext('2d');
+                var num1 = 2,//干扰数
+                    num2 = 5;//字符数
+                for (var n = 1; n <= num1; n++) {
+                    var mostart = parseInt(Math.random() * 501), moend = parseInt(Math.random() * 301);
+                    var listart = parseInt(Math.random() * 501), liend = parseInt(Math.random() * 301);
+                    var color = `rgb(${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)})`;
+                    var size = `${parseInt(Math.random() * 20 + 8)}`
+                    can.beginPath();
+                    can.moveTo(mostart, moend);
+                    can.lineTo(listart, liend)
+                    can.closePath;
+                    can.strokeStyle = color;
+                    can.lineWidth = size;
+                    can.stroke()
+                }
+                console.log('更新成功');
+                var a = parseInt(500 / num2), d = 0
+                for (var c = 1; c <= num2; c++) {
+                    var sixe = parseInt(Math.random() * 20 + 20);
+                    var color = `rgb(${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)},${parseInt(Math.random() * 256)})`;
+                    var ran = randoms();
+                    console.log(ran);
+                    can.beginPath();
+                    can.font = `700 ${sixe}px  宋体`
+                    can.fillText(`${ran}`, parseInt(Math.random() * (a - sixe) + d), parseInt(Math.random() * (301 - sixe) + sixe));
+                    can.fillStyle = color;
+                    can.closePath();
+                    d += a
+                }
+
+
+            }
+
+
+
+        }
+        function randoms() {
+            var s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+            return s.charAt(parseInt(Math.random() * s.length));
+        }
+    //    document.querySelector()
+    </script>
+</head>
+
+<body>
+    <canvas style="border:1px dashed red ;" width="500px" height="300px"></canvas>
+</body>
+
+</html>

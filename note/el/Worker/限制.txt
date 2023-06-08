@@ -1,0 +1,9 @@
+使用Web Worker有以下几点限制：
+
+同域限制。子线程加载的脚本文件，必须与主线程的脚本文件在同一个域
+
+DOM限制。子线程所在的全局对象，与主进程不一样，它无法读取网页的DOM对象，即document、window、parent这些对象，子线程都无法得到。(但是，navigator对象和location对象可以获得。)
+
+脚本限制。子线程无法读取网页的全局变量和函数，也不能执行alert和confirm方法，不过可以执行setInterval和setTimeout，以及使用XMLHttpRequest对象发出AJAX请求
+
+文件限制。子线程无法读取本地文件，即子线程无法打开本机的文件系统(file://)，它所加载的脚本，必须来自网络

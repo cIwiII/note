@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aa{
+            width: 600px;
+            border: 1px solid red;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .bb{
+            display: flex;
+            flex-wrap: nowrap;
+            animation: identifier 10s linear 0s infinite normal forwards;
+            animation-play-state:running;
+        }
+        .bb:hover{
+            animation-play-state:paused;
+        }
+        img{
+            margin: 0 30px;
+            width: 200px;
+            height: 200px;
+        }
+        /* 1040: 轮播4张图，同时显示3张，
+            1 2 3 4 1 2 3
+    1 2 3 4 1 2 3
+           重复3张，移动4，单张占宽260 ；260*4=1040 */
+        @keyframes identifier {
+            0%{margin-left: 0%;}
+            100%{margin-left: -1040px;}
+        }
+        img:hover{
+            width: 300px;
+            height: 300px;
+        }
+        .active{
+            margin-left: -80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">
+        <div class="bb" >
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+            <img src="./img-1.jpg" alt="" data-index="1">
+        </div>
+    </div>
+    <script>
+        function ss(e){
+            let index=e.target.getAttribute("data-index");
+            console.log(index);
+            if(index){
+                e.target.setAttribute("class","active")
+            }
+        }
+       let ele= document.querySelector(".bb")
+       ele.addEventListener("click",ss)
+    </script>
+</body>
+</html>

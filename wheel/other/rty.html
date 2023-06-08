@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(9, 110, 49);
+            user-select: none;
+        }
+
+        .out {
+            margin: 0 auto;
+            margin-top: 100px;
+            width: 1000px;
+            height: 500px;
+            position: relative;
+
+        }
+
+        .header {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        .header>div {
+            width: 80px;
+            border-radius: 5px;
+            user-select: none;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+
+        .left,
+        .right {
+            width: 100px;
+            height: 100%;
+        }
+
+        .center {
+            width: 800px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .center>div {
+            width: 300px;
+            height: 200px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer>div {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const regex = new RegExp(/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}/);
+    </script>
+    <div class="out">
+        <div class="header">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div id="time">XX</div>
+            <div>3</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+        <div class="content">
+            <div class="left">left</div>
+            <div class="center" onclick="addNum(event)">
+                <div data-v="left">0</div>
+                <div data-v="right">0</div>
+            </div>
+            <div class="right">right</div>
+        </div>
+        <div class="footer" onclick="clicks(event)">
+            <div class="active">10</div>
+            <div>20</div>
+            <div>50</div>
+            <div>100</div>
+            <div>200</div>
+        </div>
+    </div>
+    <script>
+        /* 定时器 */
+        let timer = null, timeLength = 500, time = 21;
+        /* 点击数据 */
+        let add = 10, addObj = { left: 0, right: 0 }, yesOrNo = false;
+        function timeS() {
+            let inTime = time - 1;
+            if (timer) clearInterval(timer)
+            document.querySelector('#time').innerHTML = inTime--;
+            timer = setInterval(() => {
+                document.querySelector('#time').innerHTML = inTime--;
+                if (inTime < 0) {
+                    clearInterval(timer);
+                }
+            }, timeLength)
+        }
+        timeS();
+        let outTimer = setInterval(() => {
+            timeS();
+            document.querySelector('.center').innerHTML='<div data-v="left">0</div><div data-v="right">0</div>'
+        }, time * timeLength)
+        /* 点击 */
+        function clicks(event) {
+            console.log(12, event);
+            const num = Number(event.target.innerHTML);
+            if (Number.isNaN(num)) return;
+            add = num;
+            document.querySelector('.active').classList.remove('active');
+            event.target.classList.add('active');
+        }
+        /* add */
+        function addNum(event) {
+            const target = event.target;
+            const direction = target.getAttribute('data-v');
+            let direct = 'left';
+            // if (target.classList.contains('center')) return;
+            if (!direction) return;
+            if (Number.isNaN(target.innerText)) return;
+            target.innerText = Number(target.innerText) + add;
+            addObj[direction] += add;
+            if (yesOrNo === 'random') {
+                direct = Math.random() >= 0.5 ? 'left' : 'right';
+            } else if (yesOrNo) {
+                direct = addObj.left > addObj.right ? 'left' : 'right';
+            } else {
+                direct = addObj.left < addObj.right ? 'left' : 'right';
+            }
+            console.log(addObj, direct);
+            return direct;
+            // randomAdd();
+        }
+        /* time内随机添加 */
+        function randomAdd() {
+            const randomArray = [10, 20, 50, 100, 200];
+            const randomNum = Math.floor(Math.random() * randomArray.length);
+            const num = randomArray[randomNum];
+            console.log(randomNum, num);
+            return num;
+        }
+        function swap(target, currentIndex, changeIndex){
+            
+            target[currentIndex] = target.splice(changeIndex, 1, target[currentIndex])[0];
+            return target;
+        }
+        const swapWay = (newArr, i, j) => {
+            [newArr[j], newArr[i]] = [newArr[i], newArr[j]];
+            return newArr;
+        };
+        const arr177 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
+        const a177 = swapWay(arr177,7,8);
+        console.log('交换1',a177)
+    </script>
+
+</body>
+
+</html>

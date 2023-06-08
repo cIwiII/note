@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,li,h3,p{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            /* width: 300px; */
+            margin: 50px;
+            /* border: 1px solid red; */
+        }
+        div ul{
+            width: 350px;
+            margin: 0 auto;
+        }
+        div ul li{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(88, 193, 225);
+            padding: 30px 50px;
+            transition: all 0.5s;
+        }
+        div ul:hover li{
+            transform: scale(0.94);
+            opacity: 0.6;
+        }
+        div ul li:hover,div ul li:focus{
+            opacity: 1;
+            transform: rotate(4deg);
+            border-radius: 10px;
+            /* box-shadow: h-shadow v-shadow blur spread color inset;  
+            h-shadow 必需。水平阴影的位置。允许负值。     v-shadow  必需。垂直阴影的位置。允许负值。
+            blur 可选。模糊距离。     spread  可选。阴影的尺寸。 color 可选。阴影的颜色。  
+            inset 可选。将外部阴影 (outset) 改为内部阴影 */
+            box-shadow: 0 3px 0 1px #cccccc;
+        }
+        div ul li:focus{
+            
+            outline: none;
+            transform: translateX(50px);
+        }
+        /* focus 是针对我们键盘上的tab建切换时能获取到焦点的元素,tabindex的属性能够强制让标签获得焦点的效果 */
+    </style>
+
+</head>
+ 
+<body>
+    <div>
+        <ul>
+            <li tabindex="0">
+                <h3>Link 1</h3>
+                <p>text 1</p>
+            </li>
+            <li  tabindex="0">
+                <h3>Link 2</h3>
+                <p>text 2</p>
+            </li>
+            <li tabindex="0">
+                <h3>Link 3</h3>
+                <p>text 3</p>
+            </li>
+            <li  tabindex="0">
+                <h3>Link 4</h3>
+                <p>text 4</p>
+            </li>
+            <li tabindex="0">
+                <h3>Link 5</h3>
+                <p>text 5</p>
+            </li>
+            <li tabindex="0">
+                <h3>Link 6</h3>
+                <p>text 6</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

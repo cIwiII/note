@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 600px;
+            border: 1px solid red;
+            margin: 100px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 设置景深 */
+            perspective: 100px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all 5s;
+        }
+        .box:hover .inner{
+            /* x轴缩放 */
+            /* transform: scaleX(2); */
+            /* y轴缩放 */
+            /* transform: scaleY(2); */
+            /* z轴缩放 */
+            /* transform: scaleZ(2); */
+            /* 同时设置3条轴的缩放 放大或缩小为原来的倍数 */
+            transform: scale3d(2,0,1);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

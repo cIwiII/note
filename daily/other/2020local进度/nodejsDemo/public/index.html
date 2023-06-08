@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: '/class',
+                type: 'get',
+                success: function (data) {
+                    // console.log(data);
+                    render(data.data);
+                }
+            });
+            $('tbody').on('click', oper);
+            function oper(event) {
+                if (event.target.innerText == '修改') {
+                    // console.log(event.target.parentElement.parentElement.children[1]);
+                    let td = event.target.parentElement.parentElement.children[1];
+                    td.innerHTML = `<input type="text" name="name" value="${td.innerText}">`;
+                    let opeTd = event.target.parentElement;
+                    opeTd.innerHTML = `<button>确定</button>`;
+                }else if(event.target.innerText == '删除'){
+                    console.log('删除');
+                    let id=event.target.parentElement.parentElement.firstElementChild.innerText;
+                    $.ajax({
+                        url:`/class/${id}`,
+                        type:'delete',
+                        success:function(data){
+                            // console.log(data);
+                            alert(data.message);
+                            render(data.data);
+                        }
+                    });
+
+                }else if(event.target.innerText == '确定'){
+                    // console.log('修改');
+                    //获取目标编号
+                    let id=Number(event.target.parentElement.parentElement.children[0].innerText);
+                    //获取新名称
+                    let name=event.target.parentElement.parentElement.children[1].firstElementChild.value;
+                    $.ajax({
+                        url:`/class/${id}/${name}`,
+                        type:'put',
+                        success:function(data){
+                            // console.log(data);
+                            alert(data.message);
+                            render(data.data);
+                        }
+                    })
+                }
+            }
+            //新增表单提交事件
+            $('#addForm').on('submit',function(event){
+                //阻止默认提交
+                event.preventDefault();
+                $.ajax({
+                    url:'/class/'+$('#cname').val(),
+                    type:'post',
+                    success:function(data){
+                        alert(data.message);
+                        render(data.data);
+                        $('#cname').val('');
+                    }
+                });
+            })
+            function render(data) {
+                let content = '';
+                data.forEach(val => {
+                    content += `<tr>
+                                <td>${val.id}</td>
+                                <td>${val.name}</td>
+                                <td>
+                                    <span>删除</span>
+                                    <span>修改</span>
+                                </td>
+                            </tr>`;
+                });
+                $('tbody').html(content);
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <form action="" id="addForm">
+        <input type="text" id="cname">
+        <input type="submit">
+    </form>
+    <!-- <form action="/type/demo" method="get" id="loginForm">
+        <label for="acc">账号:</label>
+        <input type="text" id="acc" name="acc" placeholder="请输入11位手机号">
+        <br/>
+        <label for="pwd">密码:</label>
+        <input type="password" id="pwd" name="pwd" placeholder="请输入6~12位数字或字母">
+        <br/>
+        <input type="submit">
+    </form> -->
+</body>
+
+</html>

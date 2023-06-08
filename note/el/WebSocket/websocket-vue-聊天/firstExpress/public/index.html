@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天室</title>
+    <style>
+        .box {
+            width: 71%;
+            height: 500px;
+            border: 1px solid green;
+            margin-left: 10px;
+        }
+ 
+        input {
+            width: 70%;
+            height: 30px;
+            border: 1px solid lightpink;
+            outline: none;
+            margin: 10px;
+        }
+ 
+        button {
+            width: 100px;
+            height: 30px;
+            border: 1px solid lightpink;
+            color: lightpink;
+        }
+    </style>
+</head>
+ 
+<body>
+    <input type="text">
+    <button>点击发送</button>
+    <div class="box"></div>
+    <script>
+        var input = document.getElementsByTagName('input')[0]
+        var btn = document.getElementsByTagName('button')[0]
+        var box = document.querySelector('.box')
+        //创建WebSocket对象
+        var ws = new WebSocket('ws://127.0.0.1:8081')
+        //启动socket服务
+        ws.addEventListener('open', function () {
+            box.innerHTML = '连接服务已启动~'
+        })
+        //接收数据
+        ws.addEventListener('message', function (e) {
+            box.appendChild(transformMsg(e))
+        })
+        //点击按钮发送数据
+        btn.addEventListener('click', function () {
+            var value = input.value
+            input.value = ''
+            ws.send(value)
+        })
+ 
+        //生成p标签
+        function transformMsg(e) {
+            var data = JSON.parse(e.data)
+            console.log(data)
+            var p = document.createElement('p')
+            p.innerText = data.msg + '---' + data.time
+            if (data.type === 0) {
+                p.style.color = 'green'
+            } else if (data.type === 1) {
+                p.style.color = 'black'
+            } else {
+                p.style.color = 'red'
+            }
+            return p
+        }
+    </script>
+</body>
+ 
+</html>

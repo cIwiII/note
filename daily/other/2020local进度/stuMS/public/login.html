@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#loginForm').on('submit',function(event){
+                event.preventDefault();
+                $.ajax({
+                    url:'/user/login',
+                    type:'post',
+                    data:{
+                        acc:$('#acc').val(),
+                        pwd:$('#pwd').val()
+                    },
+                    success:function(data){
+                        // console.log(data);
+                        if(data.code==200){
+                            // console.log('登录成功');
+                            //存储登录信息
+                            sessionStorage.setItem('loginAcc',$('#acc').val());
+                            //登录成功
+                            location.href='index.html'
+                        }else{
+                            alert(data.message);
+                        }
+                    }
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+    <form action="/user/login" method="post" id="loginForm">
+        <label for="acc">账号:</label>
+        <input type="text" id="acc" name="acc" placeholder="请输入11位手机号">
+        <br/>
+        <label for="pwd">密码:</label>
+        <input type="text" id="pwd" name="pwd" placeholder="请输入6~12位数字或字母">
+        <br/>
+        <input type="submit">
+    </form>
+</body>
+</html>

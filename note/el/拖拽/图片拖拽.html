@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        width: 300px;
+        height: 100px;
+        border: 1px solid red;
+        margin: auto;
+        display: flex;
+      }
+      #one,
+      #two,
+      #three {
+        width: 100px;
+        height: 100px;
+        border: 1px solid blue;
+        box-sizing: border-box;
+        background-size: cover;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        document.querySelector('.content').ondragstart = function (event) {
+          // console.log('开始拖拽',event.target);
+          //将事件源的id值存储
+          event.dataTransfer.setData('targetId', event.target.id);
+        };
+        document.querySelector('.content').ondragover = function (event) {
+          // console.log('拖拽悬浮');
+          //阻止默认行为，默认行为是不可释放元素
+          event.preventDefault();
+        };
+        document.querySelector('.content').ondrop = function (event) {
+          // console.log('拖拽释放');
+          //获取存储的数据
+          var targetId = event.dataTransfer.getData('targetId');
+          // console.log(targetId);
+          //获取事件源
+          var oldTarget = document.querySelector('#' + targetId);
+          //获取事件源背景图片
+          var backImg = oldTarget.style.backgroundImage;
+          // console.log(backImg);
+          //判断是否存在背景
+          if (backImg.length > 0) {
+            //取消事件源的背景图片
+            oldTarget.style = '';
+            //设置当前发生释放的元素背景为原图片
+            event.target.style.backgroundImage = backImg;
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div id="one" style="background-image: url('./butterfly-frame0.png')" draggable="true"></div>
+      <div id="two" draggable="true"></div>
+      <div id="three" draggable="true"></div>
+    </div>
+  </body>
+</html>

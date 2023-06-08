@@ -1,0 +1,414 @@
+/*   插件：
+    GitLens——Git supercharged：git 远程仓库管理
+    Prettier-Code formatter : Prettier 标签版（esbenp）
+    ESLint: Microsoft 版本
+*/
+
+/* 含最初格式,zhong格式,网络极简配置，settings 10个高阶配置 */
+{
+  // 扩展09-38
+  "eslint.autoFixOnSave": true,
+  "vetur.validation.template": false,
+  // 格式化stylus, 需安装Manta's Stylus Supremacy插件
+  "stylusSupremacy.insertColons": false, // 是否插入冒号
+  "stylusSupremacy.insertSemicolons": false, // 是否插入分好
+  "stylusSupremacy.insertBraces": false, // 是否插入大括号
+  "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
+  "stylusSupremacy.insertNewLineAroundBlocks": false, // 两个选择器中是否换行
+  "auto-rename-tag.activationOnLanguage": ["*"],
+  // esli弹框报错
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.12.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "http.proxyAuthorization": null,
+  "eslint.migration.2_x": "off",
+  "workbench.editorAssociations": [],
+  "eslint.codeAction.disableRuleComment": {},
+  "eslint.codeAction.showDocumentation": {},
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+  //启用/禁用导航路径
+  "breadcrumbs.enabled": true,
+  "bracketPairColorizer.depreciation-notice": false,
+  "css.lint.ieHack": "warning",
+  "css.validate": false,
+  "stylelint.enable": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.runInTerminal": true,
+  "dart.closingLabels": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.maxComputationTime": 0,
+  "debug.onTaskErrors": "abort",
+  "dynamicFormEditor.src": "https://form-editor-qa.medlinker.com",
+  "dart.checkForSdkUpdates": false,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //在一定数量的等宽字符后显示垂直标尺
+  "editor.rulers": [80, 120],
+  //  vscode默认启用了根据文件类型自动设置tabsize的选项
+  "editor.detectIndentation": false,
+  "editor.copyWithSyntaxHighlighting": false,
+  // 文件拖拽不需要确认，false：需要确认
+  "explorer.confirmDragAndDrop": false,
+  // 文件删除不需要确认,fasle:需要确认
+  "explorer.confirmDelete": false,
+  // 保存时格式化
+  "editor.formatOnSave": true,
+  // 要在保存时运行的代码操作种类。
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "addMissingImports": true,
+    //
+    "source.fixAll.eslint": true,
+    "source.fixAll.styleslint": true,
+    "source.fixAll.tslint": true
+  },
+
+  "editor.wordWrap": "on",
+  // 是否支持鼠标缩放编辑器，ctrl+滚轮
+  "editor.mouseWheelZoom": true,
+  "explorer.incrementalNaming": "smart",
+  // 字体大小，单位像素，默认14
+  "editor.fontSize": 14,
+  // tab键宽度，默认4个空格，空格为2，被 prettier 覆盖
+  "editor.tabSize": 2,
+
+  "editor.fontFamily": "Dank Mono, Menlo, Monaco, 'Courier New', monospace",
+  // 右侧缩略图宽度，单位像素
+  "editor.minimap.maxColumn": 30,
+  // 缩略图显示比列123
+  "editor.minimap.scale": 1,
+  // 是否显示右侧快速预览
+  "editor.minimap.enabled": true,
+  //设置代码行高
+  "editor.lineHeight": 22,
+  "extensions.ignoreRecommendations": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  // Emmet工具包（内置与vscode，但必须手动配置启用）
+  "emmet.includeLangusges": {
+    "postcss": "css",
+    "javascript": "javascriptreact",
+    "markdown": "javascriptreact"
+  },
+  // 语言映射
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+
+  //输入文本按下tab转为标签
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.syntaxProfiles": {
+    "postcss": "css"
+  },
+  // 自动保存 "off" | "onFocusChange"(失焦保存) | "afterDelay"（自动保存）
+  "files.autoSave": "afterDelay",
+  // 自动保存值为 afterDelay 时的延迟保存 延迟1s
+  "files.autoSaveDelay": 1,
+  // 文件名满足指定正则采用的语言模式
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.vue": "vue",
+    ".babelrc": "javascript",
+    "*.art": "html",
+    "*.json": "jsonc" // "json"：不可注释
+  },
+
+  "fileheader.Author": "caifree",
+  "fileheader.LastModifiedBy": "caifree",
+  "grunt.autoDetect": "on",
+
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  "html.mirrorCursorOnMatchingTag": true,
+  //html标签属性是否换行
+  "html.format.wrapAttributes": "aligned-multiple",
+  "iceworks.materialSources": [],
+  "iceworks.workspace": "/Users/caihongquan/Project",
+  "javascript.format.enable": true, // 编辑器默认的代码检查规则关闭
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  // 让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+
+  // 以下配置4项，文件移动可自动更新文件路径，可以使用绝对路径@，但需要在.tsconfig/.jsconfig文件中配置绝对路径，才可使用。
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "json.schemas": [],
+  //微信小程序less转css
+  "less.compile": {
+    "outExt": ".wxss"
+  },
+  //cmd服务器打开
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "leetcode.endpoint": "leetcode-cn",
+  "leetcode.outputFolder": "${difficulty}",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.workspaceFolder": "/Users/tangyu/.leetcode",
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.defaultLanguage": "javascript",
+  "leetcode.filePath": {
+    "default": {
+      "folder": "",
+      "filename": "${id}.${kebab-case-name}.${ext}"
+    }
+  },
+
+  "minapp-vscode.disableAutoConfig": true,
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "openFormGenerator.src": "https://mrhj.gitee.io/form-generator/#/",
+  "search.showLineNumbers": true,
+  //文件打开，个性化配置，结合 workbench.editor.enablePreview": false,
+  "sync.gist": "77d05e91b98053654bc04632e19fc3ad",
+  "sync.quietSync": false,
+  "sync.removeExtensions": true,
+  "sync.syncExtensions": true,
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.forceDownload": false,
+  "stylelint.config": {},
+  "settingsSync.ignoredExtensions": [],
+  "security.workspace.trust.untrustedFiles": "open",
+
+  "terminal.integrated.splitCwd": "initial",
+  "tslint.autoFixOnSave": true,
+  "tslint.alwaysShowStatus": true,
+  "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib",
+  // tailwindCSS功能类（未内置，需下载扩展），集成如 pt-4样式类，
+  "tailwindSCC.emmetCompletions": true,
+  "tailwindSCC.validate": true,
+
+  "vsicons.dontShowNewVersionMessage": true,
+
+  "window.autoDetectHighContrast": false,
+  "window.doubleClickIconToClose": true,
+  "window.menuBarVisibility": "visible",
+  "window.zoomLevel": -1, //编辑器缩放比，ctrl+ ‘-’ | ‘+’
+  "workbench.colorTheme": "Quiet Light", // | "Monokai"
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.commandPalette.preserveInput": true,
+  "workbench.tree.indent": 25,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.enablePreview": false, //vscode 文件默认true单击为预览，点击下一个文件时，上一个消失，双击才打开。
+  "workbench.startupEditor": "newUntitledFile", // | "none",
+
+  "[html]": {
+    "editor.defaultFormatter": "octref.vetur"
+    // "editor.defaultFormatter": "vscode.html-language-features"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    //css提示时，tab或者enter替换已写好的
+    "editor.suggest.insertMode": "replace"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascript]": {
+    // "editor.defaultFormatter": "octref.vetur"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+    // "editor.defaultFormatter": "yoyo930021.vuter"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* 
+
+
+
+  插件配置
+  */
+  // ***** easysass插件配置 ***** //
+  // easysass 插件编译为css时的文件存放位置
+  "easysass.targetDir": "./css",
+
+  // ***** vetur插件配置 ***** //
+  //vue设置tab宽度
+  "vetur.format.options.tabSize": 2,
+  //让vue中的js按编辑器自带的ts格式进行格式化，但不自动换行"vscode-typescript",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.useWorkspaceDependencies": true,
+  "vetur.completion.tagCasing": "initial",
+  // 指定vue-html格式化工具，
+  "vetur.format.defaultFormatter.html": "js-beautify-html", //其他插件名字，如：| "prettier",
+  // template-html标签的属性是否换行选项
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      //超出长度折行，不换行"aligned-multiple"| 换行 "force-aligned" | "auto" |  "force-expand-multiline",
+      "wrap_attributes": "aligned-multiple",
+      //长度限制
+      "wrap_line_length": 80, //html超过最大值换行
+      "end_with_newline": true
+    },
+    "prettier": {
+      "printWidth": 500, //js超过最大值换行
+      "semi": false, //句尾添加分号
+      "singleQuote": true, //使用单引号替代双引号,
+      "trailingComma": "none" // 禁止随时添加逗号
+    }
+  },
+  /* 
+  
+  
+  
+  
+  
+  
+  */
+  // ***** prettier配置 ***** //
+  // 超过最大值换行 prettier 29项配置
+  "prettier.printWidth": 120,
+  //句尾添加分号
+  "prettier.semi": true,
+  // 箭头函数参数只有一个是否要有小括号。avoid：省略括号
+  "prettier.arrowParens": "avoid",
+  // 在对象，数组括号与文字之间加空格 "{ foo: bar }"
+  "prettier.bracketSpacing": true,
+  //对象字面量项尾不能有逗号
+  "prettier.trailingComma": "none",
+  //不让prettier使用eslint的代码格式进行校验
+  // "prettier.eslintIntegration": true,
+  // 把'>' 是否单独放一行 jsxBracketSameLine => bracketSameLine
+  "prettier.bracketSameLine": true,
+  // 使用单引号，而不是双引号
+  "prettier.singleQuote": true,
+  // 在jsx中:单引号代替双引号
+  "prettier.jsxSingleQuote": true,
+  // 是否启用调试日志
+  "prettier.enableDebugLogs": false,
+  // 是否对引号中代码使用智能格式化
+  "prettier.embeddedLanguageFormatting": "auto", // auto | off
+  // Markdown 文本的换行方式 alway超出换行，never 不换行，默认 preserve 保持原样
+  "prettier.proseWrap": "preserve",
+  // 是否使用上述prettier配置
+  "prettier.useEditorConfig": true,
+  // html 的属性是否单独放一行，
+  "prettier.singleAttributePerLine": false,
+  // 指定文件的结尾换行符
+  "prettier.endOfLine": "lf",
+  // 指定 HTML 元素是在「内容内换行」还是在「属性与右尖括号内换行」，前者可能导致内联元素渲染出额外的空格。选项： css ──块级元素采用前者，内联元素采用后者、 strict ──全部采用后者、 ignore──全部采用后者
+  "prettier.htmlWhitespaceSensitivity": "css",
+  // 格式化的同时自动插入 @format 的特殊注释，以表示该文件已被 Prettier 格式化过
+  "prettier.insertPragma": false,
+  // 指定对象中 key 的引号添加方式。选项： as-needed──只有在需求要的情况下加引号、 consistent──有一个需要引号就给其他都统一加上、 preserve──保留用户输入的引号
+  "prettier.quoteProps": "as-needed",
+  // 只对在开头含有特定注释（如 @format ）的文件进行格式化
+  "prettier.requirePragma": false,
+  // 指定一个制表符等于的空格数
+  "prettier.tabWidth": 2,
+  // 使用 Tab 缩进，而不是空格缩进
+  "prettier.useTabs": false,
+  // 缩进 Vue 的 <script> 和 <style> 标签。,同步142-144-230211
+  "prettier.vueIndentScriptAndStyle": false,
+  /* 
+
+ */
+  // ***** eslint vs-code 本地 配置 ***** //
+  // 所有eslint都是警告而非错误,优先级低于项目规则  off 关闭，warn 警告带波浪线
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "off" }],
+  /* 
+ 
+
+
+ */
+  // 代码中对应括号的样式，自动换行等，不配置，或值为null
+  // "editor.language.brackets": [],
+  // 该属性毫无影响 没有意义（控制是否启用括号对着色。workbench.colorCustomizations重写突出显示颜色。默认为true）
+  "editor.bracketPairColorization.enabled": true,
+  // 是否启用-括号对参考线，必须 editor.language.brackets = null，"editorBracketMatch.border": "#ff0000"
+  "editor.guides.bracketPairs": true,
+  // ***** 仅可编码设置项 具体见文档，一下为常用 ***** //
+
+  // 编辑器颜色自定义设置, 官方文档： https://code.visualstudio.com/api/references/theme-color#activity-bar
+  "workbench.colorCustomizations": {
+    //  路径焦点颜色
+    "breadcrumb.focusForeground": "#ff0000",
+    //  当前打开的文档或模块的边框
+    "contrastActiveBorder": "#ee08087b",
+    //  编辑器背景
+    "editor.background": "#2d2c2c",
+    //  选中的文本颜色
+    "editor.selectionBackground": "#13afe891",
+    //  光标所在括号对着色
+    "editorBracketMatch.border": "#ff0000",
+    //  匹配括号的背景色
+    "editorBracketMatch.background": "#ffffff22",
+    // 当前光标所在行行号颜色
+    "editorLineNumber.activeForeground": "#fff202",
+    // 光标所在行背景颜色
+    "editor.lineHighlightBackground": "#a29f9f1c",
+    // 编辑器光标颜色
+    "editorCursor.foreground": "#f8f9fa",
+    // 编辑器默认前景色,存文本颜色 如html 中的文本，txt存文本文件
+    "editor.foreground": "#32b538",
+    // 与所选内容具有相同内容的区域颜色
+    "editor.selectionHighlightBackground": "#ffeb1150",
+    // 当前搜索匹配项的颜色
+    "editor.findMatchBackground": "#09bceea5",
+    // 搜索查找匹配项的颜色
+    "editor.findMatchHighlightBackground": "#ee680950",
+    // 当前搜索匹配项所在行背景颜色
+    "editor.rangeHighlightBackground": "#a29f9f1c"
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "#8fc693", // 注释
+    "keywords": "#aa77bb", // 关键字
+    "variables": "#55ccff", // 变量名
+    "strings": "#ddaa55", // 字符串
+    "functions": "#c7c777", // 函数名
+    "numbers": "#ffd1d1", // 数字
+    "types": "#66bb33" //类型
+  }
+}

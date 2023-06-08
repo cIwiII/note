@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul,li{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 1200px;
+            border: 1px solid red;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .box ul{
+            width: 600%;
+            display: flex;
+            animation-name: banner;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-delay: 3s;
+        }
+        .box ul li{
+            width: 100%;
+        }
+        .box ul li img{
+            width: 100%;
+        }
+
+        @keyframes banner {
+            0%{
+                margin-left: 0;
+            }
+            10%{
+                margin-left: -100%;
+            }
+            20%{
+                margin-left: -100%;
+            }
+            30%{
+                margin-left: -200%;
+            }
+            40%{
+                margin-left: -200%;
+            }
+            50%{
+                margin-left: -300%;
+            }
+            60%{
+                margin-left: -300%;
+            }
+            70%{
+                margin-left: -400%;
+            }
+            80%{
+                margin-left: -400%;
+            }
+            90%{
+                margin-left: -500%;
+            }
+            100%{
+                margin-left: -500%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="./imgs/banner1.jpg" alt="">
+            </li>
+            <li>
+                <img src="./imgs/banner2.jpg" alt="">
+            </li>
+            <li>
+                <img src="./imgs/banner3.jpg" alt="">
+            </li>
+            <li>
+                <img src="./imgs/banner4.jpg" alt="">
+            </li>
+            <li>
+                <img src="./imgs/banner5.jpg" alt="">
+            </li>
+            <li>
+                <img src="./imgs/banner1.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

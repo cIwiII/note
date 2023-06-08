@@ -1,0 +1,40 @@
+
+html, body {
+  margin: 0;
+}
+
+main {
+  margin-top: 0;
+}
+
+body {
+  background: linear-gradient(to right top, #c69 50%, #ddd 50%);
+  background-size: 100% calc(100% - 100vh +  -6px);
+  background-repeat: no-repeat;
+}
+
+body:before {
+  content: '';
+  position: fixed;
+  top: 6px;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  background: white;
+  height: 20px;
+}
+
+main {
+  font-family: monospace;
+  max-width: 50%;
+  margin: 0 auto;
+  font-size: 1.5em;
+}
+
+main h1 {
+  color: #c69;
+}
+
+main div {
+  margin-bottom: 1em;
+}

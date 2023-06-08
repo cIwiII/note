@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myMap {
+            width: 600px;
+            height: 600px;
+            border: 1px solid red;
+        }
+    </style>
+    <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=aF4dfBtsBD209YNrVcj40nWV7Lm4CQb6"></script>
+    <script>
+        window.onload = function () {
+            // var myMapEle=document.querySelector('#myMap');
+            // var myMap=new BMapGL.Map(myMapEle);
+            //创建地图实例对象
+            var myMap = new BMapGL.Map('myMap');
+            //设置地图中心点和地图级别
+            var centerPoint = new BMapGL.Point(104.069944, 30.579012);
+            myMap.centerAndZoom(centerPoint, 15);
+
+            // var scaleCtrl = new BMapGL.ScaleControl();  // 添加比例尺控件
+            // myMap.addControl(scaleCtrl);
+
+
+            var zoomCtrl = new BMapGL.ZoomControl();  // 添加缩放控件
+            myMap.addControl(zoomCtrl);
+
+
+            // var navi3DCtrl = new BMapGL.NavigationControl3D();  // 添加3D控件
+            // myMap.addControl(navi3DCtrl);
+
+
+            // //定位控件
+            // var locationControl = new BMapGL.LocationControl({
+            //     // 控件的停靠位置（可选，默认左上角）
+            //     anchor: BMAP_ANCHOR_TOP_RIGHT,
+            //     // 控件基于停靠位置的偏移量（可选）
+            //     offset: new BMapGL.Size(20, 20)
+            // });
+            // // 将控件添加到地图上
+            // myMap.addControl(locationControl);
+
+
+            //城市控件
+            var cityControl = new BMapGL.CityListControl({
+                // 控件的停靠位置（可选，默认左上角）
+                anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                // 控件基于停靠位置的偏移量（可选）
+                offset: new BMapGL.Size(50, 50)
+            });
+            // 将控件添加到地图上
+            myMap.addControl(cityControl);
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="myMap"></div>
+</body>
+
+</html>

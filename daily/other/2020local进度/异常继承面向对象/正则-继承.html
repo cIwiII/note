@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1、定义Random的类函数nextInt(start,end)，实现根据用户传入的起始和结束区间生成随机整数(取前不取后)；[start,end)
+        class Random{
+            static nextInt(start,end){
+                return Math.floor(Math.random()*(end-start))+start;
+            }
+        }
+        // console.log(Random.nextInt(55,85));
+        // 2、定义正则工具类，包含常用正则表达式类属性以及对应判断的类行为;
+        class RegexUtil{
+            //手机号
+            static telReg=/^1[3-9]\d{9}$/;
+            //密码
+            static passwordReg=/^[a-zA-Z][0-9A-Za-z]{5,11}$/;
+
+            //判断手机号正则
+            static checkTel(str){
+                return this.telReg.test(str);
+            }
+
+            static checkPassword(str){
+                return this.passwordReg.test(str);
+            }
+        }
+
+        let demo={
+            test:()=>{
+                console.log(this);//window
+            }
+        }
+        console.log(this);//window
+        demo.test();
+
+        let demo1={
+            test:function(){
+                console.log(this);//demo1
+            }
+        }
+        demo1.test();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

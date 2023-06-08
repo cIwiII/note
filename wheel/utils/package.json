@@ -1,0 +1,22 @@
+{
+  "name": "@xgimi/download",
+  "version": "0.0.1",
+  "description": "Download file on browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.xgimi.com:xgimi-base/download.git"
+  },
+  "keywords": [
+    "download",
+    "file"
+  ],
+  "author": "ruby.luo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}

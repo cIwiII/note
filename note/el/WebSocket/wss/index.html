@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="input">
+  <button id="button">发送</button>
+  <p>ws测试:消息如下</p>
+  <div id="demo"></div>
+  <script>
+
+    let ws = new WebSocket("ws://localhost:7776/socket");
+    let ele = document.getElementById('demo');
+    let button = document.getElementById('button');
+    let input = document.getElementById('input');
+    
+    // ws.onopen = function () {
+    //   console.log('连接成功')
+    // }
+    ws.addEventListener('open', function () {
+      console.log('连接成功')
+    })
+    ws.onmessage = function (message) {
+      // message = {...,data:'{数据...，data:'正文'}',...}
+      let text = JSON.parse(message.data);
+      console.log('接受消息', text);
+      let child = document.createElement("div")
+      child.innerHTML = text.data
+      ele.appendChild(child)
+    }
+    ws.onerror = function (error) {
+      console.log('ws异常', error);
+    }
+
+    ws.onclose = function () {
+      console.log("连接关闭")
+    }
+
+    button.onclick = send
+    //enter被按下
+    input.onkeydown = function (event) {
+      if (event.keyCode == 13) {
+        console.log('enter被按下')
+        send();
+      }
+    }
+    function send() {
+      let text = input.value;
+      let obj = { type: '发送', data: text }
+      console.log("发送文本为", obj)
+      ws.send(JSON.stringify(obj));
+      input.value = ''
+    }
+    //二进制转换为发送时的数据类型
+    function binaryData(data) {
+      return JSON.parse(new TextDecoder('utf-8').decode(new Uint8Array(data)));
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .payfor1,
+        .payfor2,
+        .payfor3 {
+            width: 200px;
+            height: 80px;
+            float: left;
+            border: 2px solid black;
+            margin: 0 20px;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+    <style>
+        .zf,
+        .wx,
+        .yl {
+            width: 200px;
+            height: 80px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 80px;
+            float: left;
+            margin-left: 20px;
+        }
+
+        .outer {
+            border: 1px solid black;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="payfor1" onclick="demo(1)">支付宝</div>
+        <div class="payfor2" onclick="demo(2)">微信</div>
+        <div class="payfor3" onclick="demo(3)">银联</div>
+    </div>
+    <script>
+        function demo(n) {
+            var pay = document.querySelectorAll(`[class^=payfor]`);
+            for (var val of pay) {
+                val.style.border = '2px solid black'
+                switch (n) {
+                    case 1:
+                        var val1 = document.querySelector('.payfor1');
+                        val1.style.border = '2px solid red'; break;
+                    case 2:
+                        var val2 = document.querySelector('.payfor2');
+                        val2.style.border = '2px solid red'; break;
+                    case 3:
+                        var val3 = document.querySelector('.payfor3');
+                        val3.style.border = '2px solid red'; break;
+                }
+            }
+        }
+
+    </script>
+    
+    <!-- 采用事件委托 -->
+    <div class="outer">
+        <div class="zf">支付宝</div>
+        <div class="wx">微信</div>
+        <div class="yl">银联</div>
+    </div>
+    <script>
+        document.querySelector('.outer').onclick = function (event) {
+
+            //重置默认颜色
+            // 指定只让子元素执行
+            if (event.target != this) {
+                console.log('执行', event.target, event.currentTarget);
+                var payDivArray = this.children;
+                for (var payDiv of payDivArray) {
+                    payDiv.style.borderColor = 'black';
+                }
+                // 设置选中元素颜色
+                event.target.style.borderColor = 'red';
+            }
+
+        }
+    </script>
+</body>
+
+</html>

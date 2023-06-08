@@ -1,0 +1,66 @@
+
+
+## React Native 开发
+
+必须安装的依赖有：Node、[JDK](https://blog.csdn.net/wumingxiaozei/article/details/95628747) 和 [Android Studio](https://blog.csdn.net/tao_789456/article/details/118093106)。
+
+JDK：安装完成后，添加环境变量，java -version检验
+
+
+
+
+
+
+
+### 问题：
+
+Install Haxm ：下载失败
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

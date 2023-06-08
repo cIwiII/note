@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Worker</title>
+  </head>
+  <body>
+    <div>
+      Worker 输出内容：<span id="app"></span>
+      <hr />
+      <input type="text" title="" id="msg" />
+      <button onclick="sendMessage()">点击发送，开始计时</button>
+      <button onclick="stopWorker()">stop!</button>
+      <button onclick='sendMessage("暂停")'>暂停</button>
+      <br /><br />
+      <div>必须使用服务器打开测试，允许暂停，停止后不可再创建</div>
+    </div>
+
+    <script type="text/javascript">
+      /* 浏览器是否支持 Worker */
+      if (typeof Worker === 'undefined') document.writeln(' Sorry! No Web Worker support.. ');
+      else {
+        /* 
+        var myWorker = new Worker(jsUrl, options?:{ name : 'myWorker' })
+        jsUrl: 必须有，仅为同源js脚本
+        options：可选项，区分多个 Worker 线程
+        */
+        window.w = new Worker('./Web-Worker.js');
+
+        /* 接收 worker 线程消息 */
+        window.w.onmessage = e => {
+          document.getElementById('app').innerHTML = e.data;
+        };
+
+        /* 异常 */
+        window.w.addEventListener('error', error => {
+          stopWorker();
+          console.log('错误文件名', error.filename);
+          console.log('错误行号', error.lineno);
+          console.log('错误内容', error.message);
+        });
+
+        function sendMessage(params) {
+          if (params == '暂停') {
+            window.w.postMessage('暂停');
+            return;
+          }
+          const msg = document.getElementById('msg');
+          /* 主线程往 worker 线程发送数据 */
+          window.w.postMessage(msg.value);
+        }
+
+        function stopWorker() {
+          window.w.terminate();
+        }
+      }
+
+      // 主线程,配合子线程
+      // w.onmessage = function (event) {
+      //     var img = document.createElement("img");
+      //     img.src = window.URL.createObjectURL(event.data);
+      //     document.querySelector('#result').appendChild(img)
+      // }
+    </script>
+  </body>
+</html>
+
+<!-- 
+    主线程中的api，worker表示是 Worker 的实例：事件支持 DOM2 级绑定
+
+    worker.postMessage: 发送消息
+    worker.terminate: 关闭线程
+    worker.onmessage: 主线程接收回调
+    worker.onerror: 实例线程异常
+
+
+    注意，w.postMessage(aMessage, transferList?) 
+
+    aMessage: 自动拷贝过的数据，修改不会影响主线程
+    （浏览器内部的运行机制是，先将通信内容串行化，然后把串行化后的字符串发给 Worker，后者再将它还原。）
+    
+    Transferable?：可选对象的数组，用于传递所有权。一个对象的所有权被转移，在发送它的上下文中将变为不可用（中止），
+    并且只有在它被发送到的worker中可用。
+    可转移对象是如ArrayBuffer，MessagePort或ImageBitmap的实例对象，transferList数组中不可传入null。
+
+    更详细的API参见 MDN - WorkerGlobalScope。
+ -->

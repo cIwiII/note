@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    首页
+    <div><p>成功</p></div>
+    <div class="imgs"></div>
+    <img src="../img/req.png" alt="" srcset="">
+    <img src="../img/myimg.png" alt="">
+    <div></div>
+    <p>模态框</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade"（动画淡入，不需要删除fade即可） id="staticBackdrop"                上面hidden=true区域隐藏    
+        data-backdrop="static" data-keyboard="false" （静态多出本行两项，静态static，点击框外时不会关闭）
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> -->
+        <div class="modal-dialog">
+    <!-- <div class="modal-dialog modal-dialog-scrollable">加入创建可滚动的模式主体 -->
+    <!-- <div class="modal-dialog modal-dialog-centered"> 加入垂直居中的模态框，可以和滚动同时加入-->
+    <!-- 模态框小大特大也是加在29行 .modal-sm  300px   .modal-lg  800px    .modal-xl  1140px-->
+    <!-- 默认	500px -->
+        
+          <div class="modal-content">
+                <div class="modal-header">
+                    <!-- 25行aria-labelledby="exampleModalLabel"为标题的id，但没有#号，是可访问状态标识即引用模态标题 -->
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

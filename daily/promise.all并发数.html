@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise.all()</title>
+    <!-- <script src="../note/manual/js/promise限制并发.js"></script> -->
+  </head>
+  <body></body>
+  <script>
+    // 并发量
+    const limit = 3;
+    // 异步任务的参数数组，一般为url
+    const array = [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+      14, 15, 16, 17, 18, 19, 20, 1, 2
+    ];
+    // 根据参数生成Promise的函数、一般为根据传入的url构造一个Promise，其内部封装一个异步请求
+    const proFn = item => {
+      return new Promise((resolve, reject) => {
+        console.log(`开始生成${item}的异步请求          ····`);
+        // 模拟异步请求
+        setTimeout(() => {
+          console.log(item);
+          // 得到结果
+          resolve(item);
+          console.log(`${item}的异步请求执行完毕            √`);
+        }, Math.random() * 1000);
+      });
+    };
+    console.log(promiseAll(array, proFn, limit));
+
+    // proFn返回一个封装了异步任务的promise
+    function promiseAll(arr = [], proFn, limit) {
+      // 当前正在遍历的坐标
+      let index = 0;
+      // 存放结果的数组
+      let res = [];
+      // 正在执行的数组
+      let excuting = [];
+
+      // 执行函数
+      function enqueue() {
+        // 当执行完毕之后返回resolve状态的promise
+        if (index === arr.length) {
+          return Promise.resolve();
+        }
+
+        // 依次取出一个元素
+        const item = arr[index++];
+
+        /* 此处then方法会立即返回一个promise,在then回调运行结束
+         （promise生成完毕）之后才会变成resolved状态，且当时的promise与
+         proFn生成的promise保持一致(1、状态一致；2、resolve或者reject的值一致)*/
+        const p = Promise.resolve().then(() => proFn(item, arr));
+        // 将其放到promise数组
+        res.push(p);
+
+        // 将e放入正在执行的数组，并且在p执行完成之后将当前执行的e删除掉
+        const e = p.then(() => {
+          excuting.splice(excuting.indexOf(e), 1);
+        });
+        excuting.push(e);
+
+        // 让r为一个默认resolved状态的promise
+        let r = Promise.resolve();
+        // 如果执行数组满了的话，那就让r通过race等待改变状态
+        if (excuting.length >= limit) {
+          r = Promise.race(excuting);
+        }
+        // 等到r变为resolved状态（执行数组没满或者有一个已经执行完被删除了）再来递归调用enqueue
+        return r.then(() => enqueue());
+      }
+
+      // 执行完成后，通过promise.all返回所有的结果
+      return enqueue().then(() => Promise.all(res));
+    }
+  </script>
+</html>

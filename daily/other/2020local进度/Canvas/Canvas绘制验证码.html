@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //存储真实的验证码值
+        var realCode = '';
+        //存储验证码尺寸宽度
+        var picWidth = 50;
+        //存储验证码尺寸高度
+        var picHeight = 30;
+        //存储字符个数
+        var codeCount = 4;
+        //字体最小尺寸
+        var minFontSize = 12;
+        //字体最大尺寸
+        var maxFontSize = 20;
+        //存储干扰线条数
+        var lineCount=3;
+
+        function createCode(num) {
+            var str = 'abcdefghijklmiopqrstuvwxyzABCDFEGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var re = '';
+            for (var count = 1; count < num + 1; count++) {
+                //[0,len)
+                var index = Math.floor(Math.random() * str.length);
+                // console.log(str.charAt(index));
+                re += str.charAt(index);
+            }
+            // console.log(re);
+            return re;
+        }
+        realCode = createCode(codeCount);
+
+        window.onload = function () {
+            //获取目标验证码画布
+            var can = document.querySelector('canvas');
+            //设置验证码画布宽高
+            can.width = picWidth;
+            can.height = picHeight;
+
+            //获取画笔
+            var context = can.getContext('2d');
+            drawPicture(context);
+            //画布添加点击事件
+            can.onclick=function(){
+                realCode = createCode(codeCount);
+                //清空画布
+                context.clearRect(0,0,picWidth,picHeight);
+                //绘制验证码
+                drawPicture(context);
+            }
+
+        }
+        function drawPicture(context){
+            //绘制验证码
+            for (var i = 0; i < realCode.length; i++) {
+                //随机字体颜色
+                //[0,255]
+                var redValue = Math.ceil(Math.random() * 255);
+                var greenValue = Math.ceil(Math.random() * 255);
+                var blueValue = Math.ceil(Math.random() * 255);
+                context.fillStyle = `rgb(${redValue},${greenValue},${blueValue})`;
+                //设置文字大小 [16,40]
+                var codeSize = Math.ceil(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
+                context.font = `${codeSize}px 微软雅黑`;
+                //随机横坐标
+                //[picWidth/codeCount*0,(picWidth/codeCount)*1-codeSize]  [picWidth/codeCount*1,(picWidth/codeCount)*2-codeSize] [picWidth/codeCount*2,(picWidth/codeCount)*3-codeSize]
+                // var codeX=Math.ceil(Math.random()*(picWidth/codeCount-codeSize));
+                //picWidth / codeCount-codeSize==((picWidth / codeCount) * (i + 1) - codeSize) - picWidth / codeCount * i
+                var codeX = Math.ceil(Math.random() * (picWidth / codeCount-codeSize)) + picWidth / codeCount * i;
+                //随机纵坐标[codeSize,picHeight]
+                var codeY = Math.ceil(Math.random() * (picHeight - codeSize)) + codeSize;
+                //绘制字体
+                context.fillText(realCode.charAt(i), codeX, codeY);
+            }
+            //绘制干扰线
+            for (var lc = 1; lc < lineCount+1; lc++) {
+                context.beginPath();
+                //设置随机线条颜色
+                redValue = Math.ceil(Math.random() * 255);
+                greenValue = Math.ceil(Math.random() * 255);
+                blueValue = Math.ceil(Math.random() * 255);
+                context.strokeStyle = `rgb(${redValue},${greenValue},${blueValue})`;
+                //起点[0,picWidth]
+                var lineBeginX = Math.ceil(Math.random() * picWidth);
+                // [0,picHeight]
+                var lineBeginY = Math.ceil(Math.random() * picHeight);
+                context.moveTo(lineBeginX, lineBeginY);
+                //终点
+                var lineEndX = Math.ceil(Math.random() * picWidth);
+                // [0,picHeight]
+                var lineEndY = Math.ceil(Math.random() * picHeight);
+                context.lineTo(lineEndX, lineEndY);
+                //绘制线条
+                context.stroke();
+                context.closePath();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <canvas style="border: 1px solid red"></canvas>
+</body>
+
+</html>

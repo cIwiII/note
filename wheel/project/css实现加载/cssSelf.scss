@@ -1,0 +1,16 @@
+
+body {
+    background-image: linear-gradient(to right top, red 50%, green 50%);
+    background-repeat: no-repeat;
+    background-size: 100% calc(100% - 100vh - 10px);
+    margin: 0;
+}
+body::before{
+    content: '';
+    position: fixed;
+    width: 100%;
+    top: 10px;
+    z-index: -1;
+    height: calc(100vh - 10px);
+    background-color: #fff;
+}
