@@ -1,1 +1,0 @@
-CreateObject("SAPI.SpVoice").Speak"啊米托佛，你个糟老头子坏得很！"
