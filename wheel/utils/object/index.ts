@@ -98,6 +98,25 @@ export function deleteObjectKeys<T extends Record<string, any>>(object: T, props
   return newObject;
 };
 
+/**
+ * 对象深拷贝
+ * 
+ * @param object
+ * @returns object
+ */
+function deepCopy(p, c = {}) {
+  for (var i in p) {
+    if (typeof p[i] === "object") {
+      c[i] = p[i].constructor === Array ? [] : {};
+
+      deepCopy(p[i], c[i]);
+    } else {
+      c[i] = p[i];
+    }
+  }
+
+  return c;
+}
 
 /**
  * 深拷贝对象

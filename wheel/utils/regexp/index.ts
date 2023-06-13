@@ -62,30 +62,8 @@ class RegexUtil {
 }
 
 // 手机号，中间4位替换为*
-const changeCode = code => {
+const changeCode = (code:number | string) => {
   // const result = code.replace(code.substring(3,7),"****")
-  const result = code.replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3"); //RegExp.$1
+  const result = code.toString().replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3"); //RegExp.$1
   return result;
-};
-
-// 日期处理
-const formatDate = function (date) {
-  let y = date.getFullYear();
-  let m = date.getMonth();
-  m = m < 10 ? "0" + (m + 1) : m + 1;
-  let d = date.getDate();
-  d = d < 10 ? "0" + d : d;
-  return y + "-" + m + "-" + d;
-};
-
-// 随机色
-bgcolor = event => {
-  //优化，减少节点操作，数据添加属性引用
-  const trStyle = event.target.parentElement.parentElement.style;
-  const red = parseInt(Math.random() * 256);
-  const green = parseInt(Math.random() * 256);
-  const bule = parseInt(Math.random() * 256);
-
-  trStyle.backgroundColor = `rgb(${red},${green},${bule})`;
-  trStyle.color = "red";
 };

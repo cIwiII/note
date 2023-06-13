@@ -1,5 +1,5 @@
 {
-  "name": "@xgimi/download",
+  "name": "utils",
   "version": "0.0.1",
   "description": "Download file on browser.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.xgimi.com:xgimi-base/download.git"
+    "url": ""
   },
   "keywords": [
     "download",

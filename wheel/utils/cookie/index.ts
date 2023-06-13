@@ -10,7 +10,7 @@ function getCookie(cname: string):string {
   return '';
 };
 
-function getCookie1(cname){        
+function getCookie1(cname: string):string{        
   var name = cname + "=";        
   var ca = document.cookie.split(';');        
   for(var i=0; i<ca.length; i++){        
@@ -20,7 +20,7 @@ function getCookie1(cname){
   return "";        
 }
 
-function getCookie2(cname) {
+function getCookie2(cname: string):string{
   var cookies = document.cookie.split(';');
   for (var i = 0; i < cookies.length; i++) {
     var cookie = cookies[i].trim();

@@ -1,13 +1,13 @@
 ## Install
 
 ```bash
-npm install @xgimi/download --save
+npm install utils --save
 ```
 
 ## Usage
 
 ```javascript
-const { download } = require("@xgimi/download");
+const { download } = require("utils");
 
 download(url)
 ```
