@@ -12,21 +12,21 @@
 
 6、 联合类型(或类型)-合并 |  
 
+7、& 交集类型  type B = A & C，合并后的类型
+
 7、类型别名 `type` ID = number | string;
 
 8、接口：类型别名本身无法添加新的属性，而接口是可以扩展(相同名字合并)的
 
 7、枚举enum，
 
-8、元组 （数组具体定义）
+8、元组 （数组具体定义）let point:[number,string,boolean] = [1,"xiaowang",true]
 
 9、never(错误)类型：表示会抛出错误，其他可以赋值为never，但never不可赋值为其他类型
 
 10、object类型，表示值为{}、[]、function
 
 11、unknown未知类型，和any相反，unknown更加严谨
-
-12、& 交集类型  type B = A & C
 
 13、函数类型：type successType = (msg:string)=>void；interface IType {success:successType；error?:()=>void；error:()=>number；}
 
@@ -47,6 +47,69 @@
 (h)[https://www.typescriptlang.org/](https://www.typescriptlang.org/)
 
 ## 二、ts关键字
+
+extends: 继承，
+
+
+
+### keyof
+
+- 作用：将类型的key取出来
+
+```ts
+interface IProps {
+    name: string;
+    age: number;
+}
+type IPropsKey = { [K in keyof IProps]: IProps[K] };
+// 等同于：k in ['name','age'],  IPropsKey == IProps
+```
+
+
+
+### infer
+
+- 作用：提取内部类型，需要针对不同 外层类型单独定义方法，如下 EleOf
+
+```ts
+// 推断数组
+type EleOf<T> = T extends Array<infer E> ? E : T;
+type Tuple = string[];
+type TupleToUnion = EleOf<Tuple>;//  TupleToUnion =》string
+
+// 推断对象
+type Foo<T> = T extends { a: infer U } ? U : never;
+type T10 = Foo<{ a: string }>; // T10类型为 string
+
+// 推断联合类型
+type Foo<T> = T extends { a: infer U; b: infer U } ? U : never;
+type T11 = Foo<{ a: string; b: number }>; // T11类型为 string | number
+
+// 推断交叉类型
+type T1 = {name: string};
+type T2 = {age: number};
+type K2<T> = T extends {a: (x: infer U) => void, b: (x: infer U) => void} ? U : never;
+interface Props {
+  a: (x: T1) => void;
+  b: (x: T2) => void;
+}
+type k3 = K2<Props>
+
+// 自己实现 =================
+type Ids = number[];
+type Names = string[];
+。。。其他内部类型。。。
+
+type Unpacked<T> = T extends Names ? string : 
+	T extends Ids ? number :
+        T;
+
+type idType = Unpacked<Ids>; // idType 类型为 number
+type nameType = Unpacked<Names>; // nameType 类型为string
+
+```
+
+
 
 ### declare:
 
@@ -127,6 +190,20 @@ function objectKey2<T,K extends keyof T>(obj:T,key:K){
 objectKey2({id:1,name:"xiaowang",address:"wuhouqu"},"name")
 objectKey2({id:1,name:"xiaowang",address:"wuhouqu"},"address")
 ```
+
+
+## TS-内置方法
+
+### Partial 所有可选
+
+```ts
+type MyPartial<T> = { [K in keyof T]?: T[K] };
+```
+
+
+
+
+
 ## TS-环境搭建
 
 **一、基本概念**

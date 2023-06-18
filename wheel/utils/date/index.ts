@@ -17,7 +17,7 @@ export function formatTime(timestamp:number) {
 }
 
 // 日期处理
-const formatDate = function (date) {
+export const formatDate = function (date) {
   let y = date.getFullYear();
   let m = date.getMonth();
   m = m < 10 ? "0" + (m + 1) : m + 1;
@@ -25,3 +25,22 @@ const formatDate = function (date) {
   d = d < 10 ? "0" + d : d;
   return y + "-" + m + "-" + d;
 };
+
+/**
+ * 日期处理
+ * @param date 日期时间
+ * @param form 格式 yyyy-MM-dd
+ * @returns 
+ */
+export function format(date:any, form: string): string {
+   const year = date.getFullYear();
+   let month = date.getMonth() + 1;
+   if(month<10){month='0'+month}
+   let day = date.getDate();
+   if(day<10){day='0'+day}
+   let ymd=form.replace('yyyy',year).replace('MM',month).replace('dd',day)
+   return ymd
+}
+// let date: object = new Date()
+// let dates = format(date,"yyyy-MM-dd")
+// console.log(dates)
