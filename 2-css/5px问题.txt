@@ -1,0 +1,7 @@
+
+- 5px问题（产生原因：display：为行内块，img标签对齐方式问题），最总问题是元素为行内块元素，隐式具有vertical-align而产生
+
+- img标签解决方法：
+  - vertical-align：属性不为baseline，auto，super，
+  - display:block,
+  - float:left;浮动

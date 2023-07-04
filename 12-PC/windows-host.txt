@@ -1,0 +1,8 @@
+
+配置文件地址：winsows\System32\drivers\etc\hosts
+
+配置方式：ip 域名
+
+10.10.162.36   www.baidu.com
+
+修改不成功：受保护，移动到桌面，修改后再放回原处

@@ -1,0 +1,13 @@
+
+键盘上的 tab 键切换
+
+属性：
+<div tabindex="1"></div>
+
+js：
+document.getElementById("myDiv").focus();
+
+CSS：
+div:focus {
+  outline: none;
+}

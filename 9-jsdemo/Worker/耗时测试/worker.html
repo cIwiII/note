@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var startTime = new Date().getTime();
+      var count = 0;
+      //耗时任务，持续运算
+      setInterval(function () {
+        var i = 0;
+        while (i++ < 100000000);
+      }, 0);
+
+      // worker 解决方案
+      let worker = new Worker('./preciseTiming.js');
+
+      
+      
+      /* var startTime = new Date().getTime();
+      var count = 0;
+      setInterval(function () {
+        count++;
+        console.log(`普通 第${count}次：误差 ${new Date().getTime() - (startTime + count * 1000)} ms`);
+      }, 1000); */
+    </script>
+  </body>
+</html>
