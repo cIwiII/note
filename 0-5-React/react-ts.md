@@ -558,48 +558,6 @@ module.exports = {  env: {    es6: true,    node: true,    jest: true,  },  exte
 
   
 
-***\*关注我，一起携手进阶\****
-
-
-
-![img](https://filescdn.proginn.com/cf722cfc0437b2a5faa2a699992b67f5/4c57e39557d42f227da939c45a440111.webp)
-
-欢迎关注**前端早茶**，与广东靓仔携手共同进阶～
-
-![good-icon](https://stacdn.proginn.com/community/assets/images/good-icon.png)0
-
-赞
-
-![favorite-icon](https://stacdn.proginn.com/community/assets/images/collect-icon.png)0
-
-收藏
-
-回复数量: **0**
-
-
-
-暂无评论~~
-
- Ctrl+Enter
-
-![前端大神之路](https://inn.proginn.com/useralbum/551055/cps_wx_0177d7ea600c.jpg!mediumicon)
-
-[前端大神之路](https://jishuin.proginn.com/u/551055)
-
-131
-
-文章
-
-0
-
-获赞
-
-关注TA
-
-[![UniSMS (合一短信)](https://www.proginn.com/Public/image/uni/unisms-ani-p1.gif?r=jsi)](https://unisms.apistd.com/?source=jsi.pc.sani)NEW
-
-### 相关文章推荐
-
 - [如何优雅地在 React 中使用TypeScript，看这一篇就够了！](https://jishuin.proginn.com/p/763bfbd7edff)
 -  
 
@@ -621,12 +579,6 @@ module.exports = {  env: {    es6: true,    node: true,    jest: true,  },  exte
 - [为什么 React 源码不用 TypeScript 来写？](https://jishuin.proginn.com/p/763bfbd351e4)
 -  
 
-- [《TypeScript 项目开发实战》送x2！！！](https://jishuin.proginn.com/p/763bfbd2cf34)
+- [《TypeScript 项目开发实战》送x2！！！](https://jishuin.proginn.com/p/763bfbd2cf34) 
 
-[![plat-ensure-img](https://filescdn.proginn.com/cms/10000/b608e098e5401feb3dd995dd19342562.jpg)](https://unisms.apistd.com/?source=jsi.pc.side)
-
-[![plat-ensure-img](https://filescdn.proginn.com/cms/10000/b608e098e5401feb3dd995dd19342562.jpg)](https://unisms.apistd.com/?source=jsi.pc.side)
-
-[![plat-ensure-img](https://filescdn.proginn.com/cms/10000/b608e098e5401feb3dd995dd19342562.jpg)](https://unisms.apistd.com/?source=jsi.pc.side)
-
-[Scroll to top](https://jishuin.proginn.com/p/763bfbd7bd87#top)
+[Scroll to top](https://jishuin.proginn.com/p/763bfbd7bd87#top) 

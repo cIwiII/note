@@ -28,7 +28,7 @@
 
 -   找到设置，搜索`easy sass`
 -   注意：存储路径是从`工作区`出发，工作区必须有名字
--   <img src="https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/zhangrui/20220328165731.png" alt="image-20220328165724144" style="zoom:30%;" />
+-   ![image-20230705201429458](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201429458.png)
 
 ### 嵌套
 

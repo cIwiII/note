@@ -109,7 +109,7 @@ min: 6,max: 10,required: true,
 
 vuex：vue提供的一种状态机, 专门提供给vuejs来进行状态管理的方案
 
-![image-20220713142053181](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220713142053.png)
+![image-20230705204927328](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705204927328.png)
 
 
 
@@ -1037,7 +1037,7 @@ class Observe {
 
 流程图：
 
-![image-20220526120932465](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220526120940.png)
+![image-20230705204950234](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705204950234.png)
 
 
 

@@ -229,7 +229,7 @@ node app.js
 
 1. 登录流程图
 
-   ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220601/d889cda412574e1e8d2eb3b556819029.png)
+   ![image-20230705203454633](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705203454633.png)
 
    ## GET与POST区别
 
@@ -591,7 +591,6 @@ yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 
   - 同源策略限制针对的是`浏览器请求服务器`资源的限制，不针对`服务器请求服务器资源`，故可以让浏览器请求同一个A服务器资源，如果资源存在于另外的B服务器，让A服务器去请求B服务器资源，获取到资源后，由A服务器响应资源给浏览器；
 
-    ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220609/a8c36da262aa4cf6bb473ba2701bc0e6.png)
 
 
 
@@ -617,7 +616,7 @@ yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 
     4. 如果用户要请求的资源为登录后才可访问的资源，服务器会根据请求头中携带的`sessionId`找到对应`session`文件，查看是否存在登录数据，如果存在，则将请求的目标数据作为响应内容正常响应，否则，服务器会响应登录页面内容或者提示用户登录后再访问的消息;
 
-       ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220609/c407df40cbf844aea766bc6813403751.png)
+       ![image-20230705203550518](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705203550518.png)
 
   - 存在问题
 

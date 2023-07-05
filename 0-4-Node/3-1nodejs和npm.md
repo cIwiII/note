@@ -11,7 +11,6 @@
   - 负责数据`业务处理`，接收前端数据，操作数据库数据，并将处理结果数据发送给前端;
 - 数据库
   - 负责存储管理项目中要使用的所有数据。
-    ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220530/63b8d7bbc280480098cdc74dc072a197.png)
 
 ## 软件架构模式
 
@@ -32,11 +31,8 @@
 
 - 登录
 
-  ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniuimage/woniunote/20220330/7039ae8fae344427a6097f82c17fb42c.png)
-
 - 首页数据展示
 
-  ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniuimage/woniunote/20220330/d58565269db1475aa416641e10f75f29.png)
 
 ## URL
 

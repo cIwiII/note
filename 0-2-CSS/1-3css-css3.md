@@ -1183,7 +1183,7 @@ transform: translateX(200px) skewX(45deg) rotate(90deg)
 
 ### 3D灭点
 
-<img src="https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/zhangxiao/202203281055351.png" alt="img" style="zoom:25%;" />
+![image-20230705201313367](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201313367.png)
 
 - 灭点：视线消失点(观察者位置)，默认位于设置了景深元素的正中心
 
@@ -1223,8 +1223,6 @@ transform: translateX(200px) skewX(45deg) rotate(90deg)
 ### 概念:
 
 - 一段段连续的动画,不断切换,达到动态画面的效果,它是通过帧数来控制动画的速率.
-
-  ![book](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/zhangxiao/202203151033735.gif)
 
 - 帧数:每秒切换的画面数量,流畅24帧，60帧,120帧,144帧,单位叫做hz--帧数越大,画面越流畅,
 

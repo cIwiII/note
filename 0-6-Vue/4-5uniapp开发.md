@@ -1,4 +1,4 @@
-uniapp01-环境搭建
+
 
 ## uniapp01-环境搭建
 
@@ -35,7 +35,7 @@ hBuilderX工具也是前端主流的开发者工具。这个工具已经将各�
 
 创建项目选中uniapp项目，选中vue2的版本
 
-![image-20220722110202091](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722110202.png)
+![image-20230705205825320](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205825320.png)
 
 项目结构：
 
@@ -55,7 +55,7 @@ uni.scss全局样式文件
 
 创建完成项目后，你可以可以进行编译，运行到指定的平台
 
-![image-20220722111454956](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722111455.png)
+![image-20230705205838332](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205838332.png)
 
 运行到浏览器端，就代表我们要将uniapp的代码编译到H5端（手机web端）显示
 
@@ -71,7 +71,7 @@ APP端：可以android模拟器，真机。IOS系统
 
 #### H5端
 
-![image-20220722111454956](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722111455.png)
+![image-20230705205849690](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205849690.png)
 
 默认启动项目，打包后打开chrome(默认浏览器)
 
@@ -81,22 +81,22 @@ APP端：可以android模拟器，真机。IOS系统
 
 manifest文件专门配置打包的配置项。里面有各个平台配置
 
-![image-20220722113444574](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722113444.png)
+![image-20230705205903582](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205903582.png)
 
 配置了后，我们在小程序开发工具里面才不会是测试账号。
 
 (2)需要打开微信开发者工具，设置我们代理模式
 
-![image-20220722113657387](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722113657.png)
+![image-20230705205918074](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205918074.png)
 
 配置服务
-![image-20220722113733295](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722113733.png)
+![image-20230705205934499](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205934499.png)
 
 等会你们在hbuilderx工具里面打包到小程序运行，自动启动小程序开发者工具。
 
 项目打包运行的时候，要选中微信小程序开发者工具
 
-![image-20220722113850366](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722113850.png)
+![image-20230705205946980](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205946980.png)
 
 接下来hbuilder工具就会将我们代码打包为小程序的代码，放在小程序模拟器里面运行
 
@@ -119,7 +119,7 @@ manifest文件专门配置打包的配置项。里面有各个平台配置
 
 (2)打包运行代码
 
-![image-20220722114638951](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722114639.png)
+![image-20230705205956340](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705205956340.png)
 
 运行android系统：
 
@@ -127,15 +127,15 @@ manifest文件专门配置打包的配置项。里面有各个平台配置
 
 基座：相当于在android或ios系统中创建一个壳子，这个壳子里面可以运行你们的前端代码。手机里面的应用程序安装后有图标，这就称为基座/
 
-![image-20220722114818646](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722114818.png)
+![image-20230705210009004](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210009004.png)
 
 打开ADB配置，将模拟器端口号配置进去（如果能默认找到62001，可以不用配置）
 
-![image-20220722114854667](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722114854.png)
+![image-20230705210020828](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210020828.png)
 
 夜神模拟器，默认就是62001端口。等会自己找62001这个夜神程序
 
-![image-20220722114950075](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722114950.png)
+<img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210028561.png" alt="image-20230705210028561" style="zoom:200%;" />
 
 你们直接运行，代码就会打包到夜神模拟器运行。
 
@@ -146,17 +146,9 @@ manifest文件专门配置打包的配置项。里面有各个平台配置
 android调试
 
 1. 手机要用数据线连接电脑。驱动要安装成功。推荐要用原配的数据线
-
-2. 在手机上开启调试模式，之前以华为为例子
-
-   ![image](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20210804214200.png)
-
-```
-          找到版本号：连续点击多次 ，至少5次
-​            提示你已经打开了开发者模式
+2. 在手机上开启调试模式，之前以华为为例子，找到版本号：连续点击多次 ，至少5次，提示你已经打开了开发者模式
 3. 在设置页面中，搜索“开发人员选项”
 4. 打开开发者选项，USB调试必须打开
-    <img src="https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20210804214211.png" alt="image-2" style="zoom:33%;" />
 5. 手机连接电脑的时候，提示你连接方式
     选中传输文件。（仅充电）
 ios环境
@@ -164,9 +156,8 @@ ios环境
 我们需要在电脑上面下载iTunes工具，手机接入数据线连接itunes。
 你们在hbuilder工具里面。
 运行代码的时候，寻找一下设备
-```
 
-uniapp02-基础语法
+
 
 ## uniapp02-基础语法
 
@@ -229,13 +220,13 @@ App端还是可以用rpx，但是在某些环境下他不支持rpx，在配置�
 
 要在uniapp中能够使用scss来开发，我们需要在工具中安装费scss插件
 
-![image-20220722143542418](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722143542.png)
+<img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210156828.png" alt="image-20230705210156828" style="zoom:100%;" />
 
-![image-20220722143606654](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722143606.png)
+![image-20230705210230019](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210230019.png)
 
-![image-20220722143623756](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722143624.png)
+![image-20230705210248601](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210248601.png)
 
-![image-20220722143652784](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/xuchaobo/20220722143653.png)
+<img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705210300901.png" alt="image-20230705210300901" style="zoom:200%;" />
 
 (3)引入外部样式
 
@@ -904,19 +895,13 @@ uniapp也可以结合其他的UI组件库来帮助我们。vantui、uview
 
 在插件市场里面找到uview这个ui组件库
 
-![image-20220725145337814](file:///C:/Users/xuchaobo/AppData/Roaming/Typora/typora-user-images/image-20220725145337814.png)
-
 找到uview的插件地址
-
-![image-20220725145418088](file:///C:/Users/xuchaobo/AppData/Roaming/Typora/typora-user-images/image-20220725145418088.png)
 
 绿色按钮，代表可以直接uview插件导入到目前存在的项目中。
 
 蓝色按钮，将官方的demo代码在本地创建一份。你可以参考官方的代码
 
 安装成功你们项目中会多出来uni_modules文件夹，uview-ui这样一个插件
-
-![image-20220725145545626](file:///C:/Users/xuchaobo/AppData/Roaming/Typora/typora-user-images/image-20220725145545626.png)
 
 > 如果通过插件市场，无法将uview下载安装到项目中。手动将umi_modules到项目中
 

@@ -1,4 +1,4 @@
-20220606-数据库(mongodb)
+
 
 # 数据库(mongodb)
 
@@ -55,7 +55,7 @@
    - 安装mongodb时，在最后一个安装界面`install MongoDB compass`,去掉前面的多选框的`√`;
 2. 安装图形化界面软件(Navicat);
 
-20220606-mongoose
+
 
 # mongoose
 

@@ -26,8 +26,6 @@
 var num;//分配栈空间var arr;//分配栈空间num=3;//栈空间数据写入arr=new Array();//分配堆空间，并将堆引用地址数据写入到arr栈空间中
 ```
 
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/287a4f994a0d471991ebc42a38cad9b2.png)
-
 ## 内存生命周期
 
 1. 内存分配
@@ -68,7 +66,6 @@ var num;//分配栈空间var arr;//分配栈空间num=3;//栈空间数据写入a
 
   - 不定时回收，每次回收操作时，都会阻碍程序的运行
   
-  ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/04437424a6a347c18b9764f36fdc6a3e.png)
 
 ## 引用数据类型的内存分配
 
@@ -86,7 +83,6 @@ var num;//分配栈空间var arr;//分配栈空间num=3;//栈空间数据写入a
 
 - 内存回收
 
-  ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/74e3318d46b945dda8c05bd7f004d4c1.png)
 
 ## 值传递
 
@@ -96,33 +92,23 @@ var num;//分配栈空间var arr;//分配栈空间num=3;//栈空间数据写入a
   var num=2;function demo(v){}demo(num);
   ```
 
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/0d2cbb9d9a7c41adb50876d8b7524df0.png)
-
 ```
 var arr=[2];function demo(v){}demo(arr);
 ```
 
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/f9cfc302ede2478494bea9faae5e18f7.png)
 
-## 练习
 
 ```
 var num=1;function demo(v){//var v    v=2;}demo(num);console.log(num);//1
 ```
 
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/96ae1e6fcfa24c2b9f933c570b79163b.png)
-
 ```
 var obj={num:1};//var obj=new Object(); obj.num=1;function demo(v){//var v    v.num=2;}demo(obj);console.log(obj.num);//2
 ```
 
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/d68a2cdbaed1487abcfed438372e7ce6.png)
-
 ```
 var obj={num:1};function demo(v){    v={};//v=new Object();    v.num=2;}demo(obj);console.log(obj.num);//1
 ```
-
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/cc92955537a646c982d8da40a342141a.png)
 
 ## 执行上下文
 
@@ -180,7 +166,7 @@ var obj={num:1};function demo(v){    v={};//v=new Object();    v.num=2;}demo(obj
 
 以上三件事情完成后，变量对象就创建完成了。
 
-![image-20220424115233600](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/jianglan/20220424115233.png)
+![image-20230705201857010](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201857010.png)
 
 说明：如果出现形参名、函数名、变量名重名的情况，正常情况下是变量对象中后面的会覆盖前面的。但是由于 JavaScript 中的函数是一等公民，所以如果变量没有的值的时候，是无法将同名函数给覆盖掉的。
 
@@ -297,7 +283,7 @@ var obj={num:1};function demo(v){    v={};//v=new Object();    v.num=2;}demo(obj
       var a=1;var b = 2;var a=function(){    console.log('函数执行');}a();
       ```
     
-      ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/7ebf2fc0551e4723b5b9d2fd23324521.png)
+      ![image-20230705201923155](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201923155.png)
 
 - AO(Activation Object 执行对象，Variable Object 变量对象)
 
@@ -326,7 +312,7 @@ var obj={num:1};function demo(v){    v={};//v=new Object();    v.num=2;}demo(obj
     outer();
     ```
     
-    ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/17fd826cbdc34b4f8eee299348650beb.png)
+    ![image-20230705201936561](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201936561.png)
 
 ### 作用域链底层原理(扩展)
 
@@ -358,36 +344,11 @@ var obj={num:1};function demo(v){    v={};//v=new Object();    v.num=2;}demo(obj
   var a=1;var c=5;function outer(){    var a=2;    var b=4;    function inner(){        console.log('inner');//inner        var a=3;        console.log(a);//3  AO(inner)        console.log(b);//4  AO(inner) -> AO(outer)        console.log(c);//5  AO(inner) -> AO(outer) -> GO        console.log(d);//报错   AO(inner) -> AO(outer) -> GO ->报错    }    inner();}outer();
   ```
 
-  ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/48a61b4f01264f2ba9b1ebda9df5f05d.png)
-
-### 腾讯面试题
-
-```js
-var a = 100;
-function fn() {
-    alert(a);//AO(fn)   undefined
-    var a = 200;
-    alert(a);//AO(fn)  200
-    alert(b);//AO(fn)  b函数
-    function b() {
-        var b = 1;
-        alert(a);//AO(b) -> AO(fn)  200
-    }
-    b();
-}
-fn();
-alert(a);//100
-var a;
-alert(a);//100
-function a() {
-    console.log('a函数');
-}
-var a = 300;
-alert(a);//300
-//undefined 200 函数 200 100 100 300
-```
-
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220519/62be3cdadfde4ea18e147f8007c4ad29.png)
+  对比
+  
+  ![image-20230705202019620](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705202019620.png)![image-20230705202045011](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705202045011.png)
+  
+  
 
 
 
@@ -1347,7 +1308,7 @@ console.log(p.__proto__);
 
 **每一个对象的隐式原型，都指向创建该对象的函数的原型。**
 
-![image-20220425100156012](https://woniumd.oss-cn-hangzhou.aliyuncs.com/web/jianglan/20220425100156.png)
+![image-20230705202232974](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705202232974.png)
 
 ```js
 function Animal(demo){
@@ -1428,7 +1389,7 @@ Human.prototype=a;
 
   - 通过函数创建的对象中存在`__proto__`([[Prototype]])属性，该属性引用了该函数的原型对象;
 
-    ![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220527/40e2dcbac3884f9db9216341c517db43.png)
+    ![image-20230705202249723](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705202249723.png)
 
 ## new关键字作用
 

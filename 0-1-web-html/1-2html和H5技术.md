@@ -804,12 +804,14 @@ Demo:`https://lbsyun.baidu.com/jsdemo.htm#aCreateMap`
 
 ### 基础概念
 
-- 屏幕尺寸-英寸
+- 屏幕尺寸-英寸（对角距离）
   - 英寸为长度单位，1英寸约等于2.54厘米。
   - 移动端屏幕使用英寸作为单位，指屏幕的对角线长度。
   - 常见手机信息`https://www.uiiiuiii.com/screen`
-
-![img](https://woniuxyopenfile.oss-cn-beijing.aliyuncs.com/woniuxynote/classNoteMd/202111221731/1.png)
+  - 1/3G/3GS、4/4S：3.5；
+  - 5/5S：4.0；
+  - 6: 4.7
+  - 6Plus：5.5
 
 - 像素
   - 屏幕上的一个小方块，每个小方块有明确的位置和色彩值，每个小方块的位置和色彩值决定屏幕图像呈现的效果。
@@ -824,21 +826,15 @@ Demo:`https://lbsyun.baidu.com/jsdemo.htm#aCreateMap`
 
 - 浏览器显示网页的屏幕区域。
 - 分类:布局视口、视觉视口、理想视口。
-- 布局视口(layout viewport)
+- 布局视口(layout viewport)，网页宽度
   - 为一般浏览器有的默认视口，分辨率一般为980px。
   - 980px大于大部分移动端设备的宽度，按照布局视口的网页，用户只能通过滚动条或网页缩放的方式来浏览网页效果。
 
-![img](https://woniuxyopenfile.oss-cn-beijing.aliyuncs.com/woniuxynote/classNoteMd/202111251428/20210830104337.png)
-
-- 视觉视口(visual viewport)
-  - 指用户正在看的网页区域。
-
-![img](https://woniuxyopenfile.oss-cn-beijing.aliyuncs.com/woniuxynote/classNoteMd/202111221728/20210830105032.png)
+- 视觉视口(visual viewport)，指用户正在看的网页区域。
 
 - 理想视口(idea viewport)
   - 理想视口是布局视口的理想尺寸，当布局视口的尺寸与屏幕尺寸(视觉视口)一致时，为理想视口。
   - 设置布局视口为理想视口方式
-    - ``
     - 常用属性
       - name:配置项名称。
       - content:具体的配置信息。
@@ -879,8 +875,6 @@ window.onresize=function(){  adapter();  }
 ```
 
 ## 前端请求服务器资源的方式
-
-![img](https://woniuimage.oss-cn-hangzhou.aliyuncs.com/woniunote/20220510/15924e81d32a4b5291390f9469020d71.png)
 
 ### 软件架构模式
 

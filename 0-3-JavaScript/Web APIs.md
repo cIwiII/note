@@ -137,14 +137,5 @@ navigator.geolocation.getCurrentPosition(success, error, options);//语法
     - XMLHttpRequest.mozSystem 只读，一个布尔值。如果为 true，则不会对请求执行同源策略。
 
     - XMLHttpRequest.mozBackgroundRequest 一个布尔值。它指示对象是否表示后台服务请求。
-- 方法
-- 事件
-- 补充
-
-### 模板
-- el
-- 说明
-- 特性
-- 方法
-- 事件
-- 补充
+    
+    

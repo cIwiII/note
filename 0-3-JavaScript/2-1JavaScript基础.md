@@ -602,18 +602,16 @@ var b=function fnA(){console.log("msg")}()
 
 -   `ASCII`
 
-    -   ASCII码使用7位2进制数表示一个字符，7位2进制数可以表示出2的7次方个字符，共128个字符。EBCDIC码使用8位，可以表示出2的8次方个字符，256个字符。
+ASCII码使用7位2进制数表示一个字符，7位2进制数可以表示出2的7次方个字符，共128个字符。EBCDIC码使用8位，可以表示出2的8次方个字符，256个字符。
 
-        ![img](https://woniuxyopenfile.oss-cn-beijing.aliyuncs.com/woniuxynote/classNoteMd/202110261049/1.jpg)
+![image-20230705201652381](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20230705201652381.png)
 
 -   `MBCS`
 
     -   为了扩充[ASCII编码](https://baike.baidu.com/item/ASCII编码)，以用于显示本国的语言，不同的国家和地区制定了不同的标准，由此产生了 GB2312, BIG5, JIS 等各自的编码标准。这些使用 2 个[字节](https://baike.baidu.com/item/字节)来代表一个字符的各种汉字延伸编码方式，称为 ANSI 编码，又称为”MBCS（Muilti-Bytes Character Set，多字节字符集）”。在简体中文系统下，ANSI 编码代表 GB2312 编码，在日文[操作系统](https://baike.baidu.com/item/操作系统)下，ANSI 编码代表 JIS 编码，所以在中文 windows下要转码成gb2312,gbk只需要把文本保存为ANSI 编码即可。 不同 ANSI 编码之间互不兼容，当信息在国际间交流时，无法将属于两种语言的文字，存储在同一段 ANSI 编码的文本中。一个很大的缺点是，同一个编码值，在不同的编码体系里代表着不同的字。这样就容易造成混乱。
-
 -   `Unicode`
 
     -   称为”万国码”，如果有一种编码，将世界上所有的符号都纳入其中，无论是英文、日文、还是中文等，大家都使用这个[编码表](https://baike.baidu.com/item/编码表)，就不会出现编码不匹配现象。每个符号对应一个唯一的编码，[乱码](https://baike.baidu.com/item/乱码)问题就不存在了。这就是Unicode编码。
-
 -   `UTF-8`
 
     -   为了提高Unicode的编码效率，于是就出现了UTF-8编码。UTF-8可以根据不同的符号自动选择编码的长短。比如英文字母可以只用1个[字节](https://baike.baidu.com/item/字节)就够了。
