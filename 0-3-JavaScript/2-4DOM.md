@@ -21,45 +21,40 @@
 
 ### 常用属性
 
--   `body`
+-   `body` 对象，不存在返回null
 
-    -   提供`body`标签元素的访问（获取`body`标签对应的Element对象）。
-    -   返回当前文档的body或frameset节点，如果不存在这样的节点，就返回null。
+    ```
+    document.body;
+```
+    
+-   `title` 返回当前文档标题，可写
 
-        ```
-        document.body;
-        ```
+    ```
+document.title='新标题';
+    ```
+    
+-   `URL` 当前页url
 
--   `title`
+    ```
+document.URL
+    ```
+    
+- `images` 当前页所有图片数组
 
-    -   提供`title`标签元素的访问（获取`title`标签对应的Element对象）。title属性返回当前文档的标题，该属性是可写的。
+  ```
+  var imgElementArray=document.images;
+  
+  for(var imgEle of imgElementArray){    
+     console.log(imgEle);
+  }
+  ```
 
-        ```
-        document.title='新标题';
-        ```
-
--   `URL`
-
-    -   获取当前页面的URL。
-
-        ```
-        document.URL
-        ```
-
--   `images`
-
-    -   获取当前页面所有图片的访问。(获取所有`img`标签对应的Element对象数组)
-
-        ```
-        var imgElementArray=document.images;for(var imgEle of imgElementArray){    console.log(imgEle);}
-        ```
-
--   `forms`
-
-    -   获取当前页面所有表单的访问。(获取所有`form`标签对应的Element对象数组)
+-   `forms` 当前页所有表单 `form`标签 数组
 
     ```js
-    var formElementArray=document.forms;for(var formEle of formElementArray){    console.log(formEle);}
+var formElementArray=document.forms;
+    
+    for(var formEle of formElementArray){    console.log(formEle);}
 
     var selectForm = document.forms[index];
     var selectFormElement = document.forms[index].elements[index];
