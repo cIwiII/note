@@ -131,6 +131,7 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 | [toLocaleUpperCase()](https://www.runoob.com/jsref/jsref-tolocaleuppercase.html) | 根据本地主机的语言环境把字符串转换为大写。                   |
 | [valueOf()](https://www.runoob.com/jsref/jsref-valueof-string.html) | 返回某个字符串对象的原始值。                                 |
 | toString()                                                   | 返回一个字符串。                                             |
+| padStart(2, '0')                                             | 使用0在字符出前面填充到指定长度2                             |
 
 ## String HTML 包装方法
 
@@ -157,6 +158,8 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 ## Date 对象属性
+
+传入月份，未指定年份，源码原因，默认为2001，
 
 
 
@@ -196,7 +199,7 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 | [getUTCMonth()](https://www.runoob.com/jsref/jsref-getutcmonth.html) | 根据世界时从 Date 对象返回月份 (0 ~ 11)。                    |
 | [getUTCSeconds()](https://www.runoob.com/jsref/jsref-getutcseconds.html) | 根据世界时返回 Date 对象的秒钟 (0 ~ 59)。                    |
 | getYear()                                                    | 已废弃。 请使用 getFullYear() 方法代替。                     |
-| [parse()](https://www.runoob.com/jsref/jsref-parse.html)     | 返回1970年1月1日午夜到指定日期（字符串）的毫秒数。           |
+| [parse()](https://www.runoob.com/jsref/jsref-parse.html)     | 返回1970年1月1日午夜到指定日期（字符串）的毫秒数。 var d = Date.parse("March 21, 2012"); |
 | [setUTCDate()](https://www.runoob.com/jsref/jsref-setutcdate.html) | 根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。              |
 | [setUTCFullYear()](https://www.runoob.com/jsref/jsref-setutcfullyear.html) | 根据世界时设置 Date 对象中的年份（四位数字）。               |
 | [setUTCHours()](https://www.runoob.com/jsref/jsref-setutchours.html) | 根据世界时设置 Date 对象中的小时 (0 ~ 23)。                  |
@@ -208,9 +211,9 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 | [toDateString()](https://www.runoob.com/jsref/jsref-todatestring.html) | 把 Date 对象的日期部分转换为字符串。Fri Feb 24 2023          |
 | toGMTString()                                                | 已废弃。请使用 toUTCString() 方法代替。                      |
 | toUTCString()                                                | 根据世界时，把 Date 对象转换为字符串。实例：`var today = new Date(); var UTCstring = today.toUTCString();` |
-| [toISOString()](https://www.runoob.com/jsref/jsref-toisostring.html) | 使用 ISO 标准返回字符串的日期格式。                          |
+| [toISOString()](https://www.runoob.com/jsref/jsref-toisostring.html) | 使用 ISO 标准返回字符串的日期格式。2023-05-30T00:00:00.000Z  |
 | [toJSON()](https://www.runoob.com/jsref/jsref-tojson.html)   | 以 JSON 数据格式返回日期字符串。2021-02-24T09:00:49.952Z     |
-| [toLocaleString()](https://www.runoob.com/jsref/jsref-tolocalestring.html) | 根据本地时间格式，把 Date 对象转换为字符串。2023/2/24 17:00:49 |
+| [toLocaleString()](https://www.runoob.com/jsref/jsref-tolocalestring.html) | 根据本地时间格式，把 Date 对象转换为字符串。按当前系统格式而定 2023/2/24 17:00:49 |
 | toLocaleDateString()                                         | 根据本地时间格式，把 Date 对象的日期部分转换为字符串。2021/2/24 |
 | toLocaleTimeString()                                         | 根据本地时间格式，把 Date 对象的时间部分转换为字符串。17:00:49 |
 | toString()                                                   | 把 Date 对象转换为字符串。Fri Feb 24 2021 17:00:49 GMT+0800 (中国标准时间) |

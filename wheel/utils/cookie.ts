@@ -1,21 +1,21 @@
 
 /**
- * 获取cookie值 TODO 用js-cookie
- * @param cname cookie名
+ * 获取cookie值
+ * @param name cookie名
  */
-function getCookie(cname: string):string {
-  var reg = new RegExp("(^| )" + cname + "=([^;]*)(;|$)");
+function getCookie(name: string):string {
+  var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
   var arr = document.cookie.match(reg);
-  if (arr) return unescape(arr[2]);
+  if (arr && unescape) return unescape(arr[2]);
   return '';
 };
 
-function getCookie1(cname: string):string{        
-  var name = cname + "=";        
+function getCookie1(name: string):string{        
+  var cname = name + "=";        
   var ca = document.cookie.split(';');        
   for(var i=0; i<ca.length; i++){        
       var c = ca[i].trim();        
-      if(c.indexOf(name)==0) return c.substring(name.length,c.length);        
+      if(c.indexOf(cname)==0) return c.substring(cname.length,c.length);        
   }        
   return "";        
 }
@@ -30,16 +30,17 @@ function getCookie2(cname: string):string{
   }
   return '';
 }
-// ======================
+
+
 /**
  * 
- * @param {*} cname cookie 名
- * @param {*} cvalue cookie 值
- * @param {*} exdays cookie过期时间(天)
+ * @param {*} name cookie 名
+ * @param {*} value cookie 值
+ * @param {*} exdays cookie过期天数
  */
-export function setCookie(cname,cvalue,exdays){        
+export function setCookie(name: string,value: string,exdays: number){        
   var d = new Date();        
   d.setTime(d.getTime()+(exdays*24*60*60*1000));        
   var expires = "expires="+d.toUTCString();        
-  document.cookie = cname + "=" + cvalue + "; " + expires;        
+  document.cookie = name + "=" + value + "; " + expires;        
 }
