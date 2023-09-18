@@ -6,9 +6,9 @@ function pad(value: any, length: number = 2) {
  * 日期处理，传入时间戳
  * @param {*} timestamp 时间戳
  * @param {*} form 时间格式
- * @returns 标准时间 yyyy-MM-dd HH:mm:ss
+ * @returns 标准时间 YYYY-MM-DD hh:mm:ss
  */
-export function formatTime(timestamp: number, form: string = "yyyy-MM-dd HH:mm:ss") {
+export function formatTime(timestamp: number, form: string = "YYYY-MM-DD hh:mm:ss") {
   try {
     const date = new Date(timestamp);
     const year = pad(date.getFullYear(), 4);
@@ -19,10 +19,10 @@ export function formatTime(timestamp: number, form: string = "yyyy-MM-dd HH:mm:s
     const seconds = pad(date.getSeconds());
 
     return form
-      .replace("yyyy", year)
+      .replace("YYYY", year)
       .replace("MM", month)
-      .replace("dd", day)
-      .replace("HH", hours)
+      .replace("DD", day)
+      .replace("hh", hours)
       .replace("mm", minutes)
       .replace("ss", seconds);
   } catch (error) {

@@ -6,29 +6,21 @@
 function getCookie(name: string):string {
   var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
   var arr = document.cookie.match(reg);
-  if (arr && unescape) return unescape(arr[2]);
+  if (arr && decodeURIComponent){
+    return decodeURIComponent(arr[2]);
+  }
   return '';
 };
 
 function getCookie1(name: string):string{        
-  var cname = name + "=";        
-  var ca = document.cookie.split(';');        
-  for(var i=0; i<ca.length; i++){        
-      var c = ca[i].trim();        
-      if(c.indexOf(cname)==0) return c.substring(cname.length,c.length);        
+  var cookies = document.cookie.split(';');        
+  for(var i=0; i<cookies.length; i++){        
+      var cookie = cookies[i].trim();        
+      if(cookie.startsWith(name + '=')){
+        return cookie.substring(name.length + 1); 
+      }       
   }        
   return "";        
-}
-
-function getCookie2(cname: string):string{
-  var cookies = document.cookie.split(';');
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
-    if (cookie.startsWith(cname + '=')) {
-      return cookie.substring(cname.length + 1);
-    }
-  }
-  return '';
 }
 
 

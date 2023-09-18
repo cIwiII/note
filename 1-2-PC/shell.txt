@@ -14,4 +14,3 @@ vim ：linux 编辑文件  （windows需要 vim 添加到 path）
 - esc //预备退出
 
 - :wq  enter// 保存并退出编辑
-

@@ -1,5 +1,0 @@
-new Array(100)：传入的是长度，值为undefined，
-
-Array.from({length:100}, (v,k) => k);==Array.from(Array(100), (v,k) =>k);
-
-Object.keys(Array.apply(null, {length:100})).map((v,k) => k);

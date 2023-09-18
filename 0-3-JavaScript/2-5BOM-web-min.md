@@ -1,6 +1,6 @@
 ## BOM-Window 
 
-![img](../md-min-BOM-window.jpg)
+![img](./md-min-BOM-window.jpg)
 
 Window ：顶层对象集合
 

@@ -1,6 +1,4 @@
 
-
-
 /**
  * 复制字符串到剪贴板
  * @param value 需要复制的字符串
@@ -9,7 +7,7 @@
 export function copyText(value: string): boolean{
   /* 更新 */
   if (window.navigator.clipboard) {
-      window.navigator.clipboard.writeText(text).then(() => {console.log('复制成功')});
+      window.navigator.clipboard.writeText(value).then(() => {console.log('copy success')});
       return true;
   }
   /* 兼容处理 */
@@ -19,7 +17,7 @@ export function copyText(value: string): boolean{
   input.style.position = 'fixed';
   input.style.clip = 'rect(0 0 0 0)';//clip弃用
   input.style.top = '10px';
-  input.value = text;
+  input.value = value;
   input.select(); //选择对象
   // 浏览器复制命令，execCommand兼容
   if (document.execCommand('copy',true)) {
@@ -56,7 +54,7 @@ export function charBytes(str: string | number, charset: 'utf-8' | 'utf-16'): nu
   var i;
   var len;
   str = str.toString();
-  charset = charset !== null && charset !== void 0 ? charset : '';
+  charset = charset ?? '';
 
   if (str) {
     // UTF-16

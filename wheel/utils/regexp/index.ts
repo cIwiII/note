@@ -1,9 +1,8 @@
 /**
- * 正则表达式相关方法 
+ * 正则表达式相关方法
  * @see https://www.w3cschool.cn/javascript/javascript-expression.html
+ * @see https://c.runoob.com/front-end/854/
  */
-
-
 
 //
 class RegexUtil {
@@ -24,6 +23,9 @@ class RegexUtil {
 
   // 匹配html
   static html = /<(.*)>.*<\/\1>|<(.*) \/>/;
+
+  // html文本  匹配>之后的，<之前
+  static htmlText = /(?<=>)[^<]+?(?=<)/g;
 
   // 匹配首尾空格，字符串去空格，可以使用 str.trim()
   static swEmty = /(^\s*)|(\s*$)/g;
@@ -62,8 +64,33 @@ class RegexUtil {
 }
 
 // 手机号，中间4位替换为*
-const changeCode = (code:number | string) => {
+const changeCode = (code: number | string) => {
   // const result = code.replace(code.substring(3,7),"****")
   const result = code.toString().replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3"); //RegExp.$1
   return result;
 };
+
+{
+  var str = "12ab34cd56ef78gh999";
+  var reg = /[0-9]+/g;
+  // var reg1 = /[0-9]+?/g;//同上
+  console.log(str.match(reg));
+  //['12','34','56','78','999']
+
+  // const string = "12345";
+  // const regx = /[(\d{1,3})(\d{1,3})]/;
+  // console.log(string.match(regx));
+  // // => ["12345", "123", "45", index: 0, input: "12345"]
+}
+
+{
+  var str = "123abc456efg";
+  var reg = /[0-9]+/;
+  console.log(str.split(reg)); //['','abc','efg']
+}
+
+{
+  var str = "123abc456efg789";
+  var reg = /(?<=b)[\da-z]{0,4}/;
+  console.log(str.replace(reg, "*")); //***abc***efg***
+}

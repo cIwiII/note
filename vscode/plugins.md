@@ -22,3 +22,4 @@
 - `Chinese `汉化
 - `HTML CSS Support`：在html中支持css提示
 - `IntelliSense for CSS class names in HTML`：在html中提示css中class名
+- Comment Translate: 翻译选中项

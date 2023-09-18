@@ -1,8 +1,9 @@
 
 
+- API：Application Programming Interface 应用程序接口。
+  - 预先写好的代码接口，后期可直接通过接口执行代码，实现对应功能;
 
-
--   原生对象/本地对象
+-   原生对象(native object)/本地对象
 
 native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES自带基本对象，不含浏览器等宿主提供的对象。包含：`String、Boolean、Number、Object、Function、Array、Date、RegExp、Error、EvalError、RangeError、ReferenceError、SyntaxError、TypeError、URIError`。
 
@@ -20,9 +21,12 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 
 ## Array API方法
 
+- 指定索引赋为空(empty)：delete arr[index];
+- ES6 类型化数组，只允许包含数值类型的值
+
 | 方法                                                         | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| unshift()                                                    | 将新元素添加到数组的开头，            并返回新的长度。       |
+| unshift()                                                    | 新元素添加到数组开头，                   并返回新长度。      |
 | shift()                                                      | 删除数组的第一个元素，                   并返回该元素。      |
 | push()                                                       | 将新元素添加到数组的末尾，            并返回新的长度。       |
 | pop()                                                        | 删除数组的最后一个元素，               并返回该元素。        |
@@ -44,17 +48,94 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 | includes()                                                   | 检查数组是否包含指定的元素。                                 |
 | isArray()                                                    | 检查对象是否为数组。                                         |
 | [keys()](https://www.w3school.com.cn/jsref/jsref_keys.asp)   | 返回 Array Iteration 对象，包含原始数组的键.                 |
-| find()                                                       | 返回数组中第一个通过测试的元素的值。                         |
+| find()                                                       | 返回数组中第一个通过测试的元素的值。ES6,(callback, this?)    |
 | findIndex()                                                  | 返回数组中通过测试的第一个元素的索引。                       |
 | [reduceRight()](https://www.w3school.com.cn/jsref/jsref_reduceright.asp) | 将数组的值减为单个值（从右到左）。                           |
-| [copyWithin()](https://www.w3school.com.cn/jsref/jsref_copywithin.asp) | 将数组中的数组元素复制到指定位置或从指定位置复制。           |
-| [from()](https://www.w3school.com.cn/jsref/jsref_from.asp)   | 从对象创建数组。                                             |
-| fill()                                                       | 用静态值填充数组中的元素。                                   |
+| [copyWithin()](https://www.w3school.com.cn/jsref/jsref_copywithin.asp) | 将数组中的数组元素复制到指定位置或从指定位置复制。填充原数组的值，而非填充后改变的值，(startIndex，copyIndex，endIndex?) |
+| [from()](https://www.w3school.com.cn/jsref/jsref_from.asp)   | 从对象创建数组。ES6，(likeArray, (value)？ => value + 1，callback中的this指向？); |
+| fill()                                                       | 用静态值填充数组中的元素。(value, startIndex?, endIndex?)    |
 | toString()                                                   | 将数组转换为字符串，并返回结果。                             |
 | [entries()](https://www.w3school.com.cn/jsref/jsref_entries.asp) | 返回键/值对数组迭代对象。                                    |
 | valueOf()                                                    | 返回数组的原始值。                                           |
+| of()                                                         | ES6，修复new Array()在传入单个数值是被识别为长度             |
 
+```JS
+new Array(100)：传入的是长度，值为undefined，
 
+Array.from({length:100}, (v,k) => k); == Array.from(Array(100), (v,k) =>k);
+
+Object.keys(Array.apply(null, {length:100})).map((v,k) => k);
+```
+
+## Array 类型判断
+
+**数组判断方法**
+
+一、Array.isArray(obj)-----ES6语法
+
+```js
+ document.write(Array.isArray([ ])); //true
+```
+
+二、instanceof、constructor
+
+```js
+var arr = ['a', 'b', 'c'];
+console.log(arr instanceof Array); 	         // true 
+console.log(arr.constructor === Array;); // true
+
+// 下面的函数调用都返回 true
+Array.isArray([]);
+Array.isArray([10]);
+Array.isArray(new Array());
+Array.isArray(new Array('a', 'b', 'c'))
+// 鲜为人知的事实：其实 Array.prototype 也是一个数组。
+Array.isArray(Array.prototype); 
+
+// 下面的函数调用都返回 false
+Array.isArray();
+Array.isArray(new Uint8Array(32))
+Array.isArray({ __proto__: Array.prototype });
+
+//自定义 isArray
+if (!Array.isArray){
+  Array.isArray = function(arg){
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  };
+}
+```
+
+**类数组转换(5)**
+
+```js
+// call-slice
+Array.prototype.slice.call(arrayLike);
+// call-splice
+Array.prototype.splice.call(arrayLike, 0);
+// apply-concat
+Array.prototype.concat.apply([], arrayLike);
+// Array-from
+Array.from(arrayLike);
+// 扩展运算符
+[...arrayLike]
+```
+
+**数组冒泡算法**
+
+```js
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+```
 
 ## Math 对象属性
 
@@ -77,8 +158,8 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 | max(x,y,z,...,n)                                            | 返回 x,y,z,...,n 中的最高值。                                |
 | min(x,y,z,...,n)                                            | 返回 x,y,z,...,n中的最低值。                                 |
 | round(x)                                                    | 四舍五入。                                                   |
-| ceil(x)                                                     | 对数进行上舍入。                                             |
-| floor(x)                                                    | 对 x 进行下舍入。                                            |
+| ceil(x)                                                     | 对数进行上舍入。向上取整                                     |
+| floor(x)                                                    | 对 x 进行下舍入。向下取整                                    |
 | pow(x,y)                                                    | 返回 x 的 y 次幂（次方）。底数x，指数y                       |
 | sqrt(x)                                                     | 返回数的平方根。                                             |
 | random()                                                    | 返回 0 ~ 1 之间的随机数。wei（低层有规律）乘10取整，         |
@@ -106,8 +187,8 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 
 | 方法                                                         | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| charAt()                                                     | 返回在指定位置的字符。s.charAt(index):string                 |
-| charCodeAt()                                                 | 返回在指定的位置的字符的 Unicode 编码。s.charCodeAt(index):Unicode码 |
+| charAt()                                                     | 获取指定位置的字符                                           |
+| charCodeAt()                                                 | 获取指定位置字符的 Unicode 编码。s.charCodeAt(index):Unicode码 |
 | concat()                                                     | 连接两个或更多字符串，并返回新的字符串。（+号链接）s.concat(str2,str3):newStr |
 | indexOf()                                                    | 返回某个指定的字符串值在字符串中首次出现的位置索引。str.indexOf(string):index \|-1 |
 | lastIndexOf()                                                | 从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置。str.lastIndexOf(string):index \|-1 |
@@ -120,7 +201,7 @@ native object：独立于宿主环境的 ECMAScript实现提供的对象”。ES
 | startsWith()                                                 | 查看字符串是否以指定的子字符串开头。str.startsWith(指定开头目标子串):boolean |
 | endsWith()                                                   | 判断当前字符串是否是以指定的子字符串结尾的（区分大小写）。str.endsWith(指定结尾目标子串):boolean |
 | trim()                                                       | 去除字符串两边的空白。  str.trim()                           |
-| substr()                                                     | 从起始索引号提取字符串中指定数目的字符。  str.substr(startIndex,number):newString |
+| substr() **弃用**                                            | 从起始索引号提取字符串中指定数目的字符。  str.substr(startIndex,number):newString |
 | substring()                                                  | 提取字符串中两个指定的索引号之间的字符。  str.substring(startIndex,endIndex):newString |
 | [fromCharCode()](https://www.runoob.com/jsref/jsref-fromcharcode.html) | 将 Unicode 编码转为字符。                                    |
 | includes()                                                   | 查找字符串中是否包含指定的子字符串。                         |
@@ -223,7 +304,7 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 
-## RegExp 方括号
+## RegExp 对象属性
 
 正则表达式(Regular Expression)是描述字符模式的对象,用于匹配特定字符串(验证、查找、替换),本质是一个规则字符串，用指定的符号来编写，制定规则。
 
@@ -235,7 +316,35 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 
+| 属性                                                         | 描述                                               |
+| :----------------------------------------------------------- | :------------------------------------------------- |
+| [constructor](https://www.runoob.com/jsref/jsref-regexp-constructor.html) | 返回一个函数，该函数是一个创建 RegExp 对象的原型。 |
+| [global](https://www.runoob.com/jsref/jsref-regexp-global.html) | 判断是否设置了 "g" 修饰符                          |
+| [ignoreCase](https://www.runoob.com/jsref/jsref-regexp-ignorecase.html) | 判断是否设置了 "i" 修饰符                          |
+| [lastIndex](https://www.runoob.com/jsref/jsref-lastindex-regexp.html) | 用于规定下次匹配的起始位置                         |
+| [multiline](https://www.runoob.com/jsref/jsref-multiline-regexp.html) | 判断是否设置了 "m" 修饰符                          |
+| [source](https://www.runoob.com/jsref/jsref-source-regexp.html) | 返回正则表达式的匹配模式                           |
 
+## RegExp 对象方法
+
+| 方法                                                         | 描述                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| test                                                         | 检索字符串中指定的值。输入要匹配的字符串，返回 true 或 false。（常用判定） |
+| [compile](https://www.runoob.com/jsref/jsref-regexp-compile.html) | 在 1.5 版本中已废弃。 编译正则表达式。                       |
+| [exec](https://www.runoob.com/jsref/jsref-exec-regexp.html)  | 检索字符串中指定的值。返回找到的值，并确定其位置。           |
+| [toString](https://www.runoob.com/jsref/jsref-regexp-tostring.html) | 返回正则表达式的字符串。                                     |
+
+```js
+var reg=/^\.(com|cn|org)$/;
+var str=prompt('请输入:');
+console.log(reg.test(str));
+```
+
+
+
+## RegExp 用法
+
+### 方括号
 
 | 表达式             | 描述                               | 表达式     | 描述                                   |
 | :----------------- | :--------------------------------- | ---------- | -------------------------------------- |
@@ -248,7 +357,7 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 
-## RegExp 限定符
+### 限定符
 
 量词-数量限定符，位置限定符
 
@@ -267,7 +376,7 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 
-## RegExp元字符(预定义符号)
+### 元字符-预定义符号
 
 元字符（Metacharacter）是拥有特殊含义的字符：
 
@@ -291,7 +400,7 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 
 
 
-## RegExp 修饰符(匹配模式)
+### RegExp 修饰符(匹配模式)
 
 修饰符用于执行区分大小写和全局匹配:
 
@@ -302,24 +411,9 @@ HTML 返回包含在相对应的 HTML 标签中的内容。
 | g      | 执行全局匹配                                                 |
 | m      | 执行多行匹配。                                               |
 
-## RegExp 对象方法
-
-| 方法                                                         | 描述                                                         |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| test                                                         | 检索字符串中指定的值。输入要匹配的字符串，返回 true 或 false。（常用判定） |
-| [compile](https://www.runoob.com/jsref/jsref-regexp-compile.html) | 在 1.5 版本中已废弃。 编译正则表达式。                       |
-| [exec](https://www.runoob.com/jsref/jsref-exec-regexp.html)  | 检索字符串中指定的值。返回找到的值，并确定其位置。           |
-| [toString](https://www.runoob.com/jsref/jsref-regexp-tostring.html) | 返回正则表达式的字符串。                                     |
-
-```js
-var reg=/^\.(com|cn|org)$/;
-var str=prompt('请输入:');
-console.log(reg.test(str));
-```
 
 
-
-## RegExp--String 对象的方法
+### RegExp--String 对象的方法
 
 | 方法                                                  | 描述                                                         | FF   | IE   |
 | :---------------------------------------------------- | :----------------------------------------------------------- | :--- | :--- |
@@ -348,17 +442,6 @@ console.log( str.search( /ink/i ) ); // 10（第一个匹配位置）
 
 
 
-## RegExp 对象属性
-
-| 属性                                                         | 描述                                               |
-| :----------------------------------------------------------- | :------------------------------------------------- |
-| [constructor](https://www.runoob.com/jsref/jsref-regexp-constructor.html) | 返回一个函数，该函数是一个创建 RegExp 对象的原型。 |
-| [global](https://www.runoob.com/jsref/jsref-regexp-global.html) | 判断是否设置了 "g" 修饰符                          |
-| [ignoreCase](https://www.runoob.com/jsref/jsref-regexp-ignorecase.html) | 判断是否设置了 "i" 修饰符                          |
-| [lastIndex](https://www.runoob.com/jsref/jsref-lastindex-regexp.html) | 用于规定下次匹配的起始位置                         |
-| [multiline](https://www.runoob.com/jsref/jsref-multiline-regexp.html) | 判断是否设置了 "m" 修饰符                          |
-| [source](https://www.runoob.com/jsref/jsref-source-regexp.html) | 返回正则表达式的匹配模式                           |
-
 
 
 ## Boolean 对象属性
@@ -379,15 +462,20 @@ console.log( str.search( /ink/i ) ); // 10（第一个匹配位置）
 
 ## Number 对象属性
 
-| 属性                                                         | 描述                                   |
-| :----------------------------------------------------------- | :------------------------------------- |
-| [constructor](https://www.runoob.com/jsref/jsref-constructor-number.html) | 返回对创建此对象的 Number 函数的引用。 |
-| [MAX_VALUE](https://www.runoob.com/jsref/jsref-max-value.html) | 可表示的最大的数。                     |
-| [MIN_VALUE](https://www.runoob.com/jsref/jsref-min-value.html) | 可表示的最小的数。                     |
-| [NEGATIVE_INFINITY](https://www.runoob.com/jsref/jsref-negative-infinity.html) | 负无穷大，溢出时返回该值。             |
-| [NaN](https://www.runoob.com/jsref/jsref-number-nan.html)    | 非数字值。                             |
-| [POSITIVE_INFINITY](https://www.runoob.com/jsref/jsref-positive-infinity.html) | 正无穷大，溢出时返回该值。             |
-| [prototype](https://www.runoob.com/jsref/jsref-prototype-num.html) | 允许您可以向对象添加属性和方法。       |
+| 属性                                                         | 描述                                                  |
+| :----------------------------------------------------------- | :---------------------------------------------------- |
+| [constructor](https://www.runoob.com/jsref/jsref-constructor-number.html) | 返回对创建此对象的 Number 函数的引用。                |
+| [MAX_VALUE](https://www.runoob.com/jsref/jsref-max-value.html) | 可表示的最大的数。                                    |
+| [MIN_VALUE](https://www.runoob.com/jsref/jsref-min-value.html) | 可表示的最小的数。                                    |
+| [NEGATIVE_INFINITY](https://www.runoob.com/jsref/jsref-negative-infinity.html) | 负无穷大，溢出时返回该值。                            |
+| [NaN](https://www.runoob.com/jsref/jsref-number-nan.html)    | 非数字值。                                            |
+| [POSITIVE_INFINITY](https://www.runoob.com/jsref/jsref-positive-infinity.html) | 正无穷大，溢出时返回该值。                            |
+| [prototype](https://www.runoob.com/jsref/jsref-prototype-num.html) | 允许您可以向对象添加属性和方法。                      |
+|                                                              |                                                       |
+|                                                              | **ES6 新增 Number 属性**                              |
+| EPSILON                                                      | 表示 1 和比最接近 1 且大于 1 的最小 Number 之间的差别 |
+| MIN_SAFE_INTEGER                                             | 最小的安全的 integer 型数字 (`-(253 - 1)`)            |
+| MAX_SAFE_INTEGER                                             | 最大的安全整数（`253 - 1`）                           |
 
 ## Number 对象方法
 
@@ -400,35 +488,178 @@ console.log( str.search( /ink/i ) ); // 10（第一个匹配位置）
 | [toPrecision(x)](https://www.runoob.com/jsref/jsref-toprecision.html) | 把数字格式化为指定的长度。                           |
 | [toString()](https://www.runoob.com/jsref/jsref-tostring-number.html) | 把数字转换为字符串，使用指定的基数。                 |
 | [valueOf()](https://www.runoob.com/jsref/jsref-valueof-number.html) | 返回一个 Number 对象的基本数字值。                   |
+|                                                              |                                                      |
+|                                                              | **ES6 新增 Number 方法**                             |
+| isInteger()                                                  | 用来判断给定的参数是否为整数                         |
+| isSafeInteger()                                              | 判断传入的参数值是否是一个"安全整数"                 |
 
-## ES6 新增 Number 属性
 
-ES 6 增加了以下三个 Number 对象的属性：
 
--   EPSILON: 表示 1 和比最接近 1 且大于 1 的最小 Number 之间的差别
--   MIN_SAFE_INTEGER: 表示在 JavaScript中最小的安全的 integer 型数字 (`-(253 - 1)`)。
--   MAX_SAFE_INTEGER: 表示在 JavaScript 中最大的安全整数（`253 - 1`）。
+## Object 对象属性
 
-实例
+## Object 对静态方法
 
-var x = Number.EPSILON;  
+| 方法                                                         | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| create(proto,propertiesObject)                               | create：创建对象，能够手动指定该对象的原型。                 |
+| [freeze(obj)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze#%E6%8F%8F%E8%BF%B0) | 返回(不必接收，操作原对象)冻结后的对象,属性不可添加删除修改，浅冻结，深冻结编写递归冻结 |
+| isFrozen(obj):boolean                                        | 是否冻结                                                     |
+| [seal()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) | 密封(不可扩展)，属性不能添加和删除，可修改                   |
+| isSealed(obj):boolean                                        | 是否密封                                                     |
+| [preventExtensions(obj)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions) | 不可扩展                                                     |
+| isExtensible(sealed)                                         | 是否可扩展                                                   |
+| `getPrototypeOf()`                                           | 返回对象的原型，即 _ proto _ 属性值                          |
+| `setPrototypeOf(obj，proto)`                                 | 设置原型                                                     |
+| `is(value1,value2)`                                          | 是否为同一个值，(外表是否相同)                               |
+| `assign(target,obj1,obj2......)`                             | 浅拷贝拼接                                                   |
+| `defineProperty(obj,prop,desc)`                              | 配置对象的某个属性                                           |
+| `defineProperties()`                                         | 配置对象的多个属性                                           |
+| getOwnPropertyDescriptor(obj.prop)                           | 返回**属性描述符**对象                                       |
+| getOwnPropertyNames()                                        | 返回键，无视是否可枚举性，不能返回符号类型的属性             |
+| keys()                                                       | 返回可枚举属性键，不能返回符号类型的属性                     |
+| getOwnPropertySymbols()                                      | ES6，会返回一个数组，包含了对象自有属性名中的符号值，以便让你可以检索对象的符号类型属性 |
 
-var y = Number.MIN_SAFE_INTEGER; 
+`注意`：preventExtensions 仅自身不能添加，原型仍可操作。
 
-var z = Number.MAX_SAFE_INTEGER;
+`注意`：Set和Map底层判断是否为同一个元素是基于`is()`实现
 
-------
+## Object实例方法
 
-## ES6 新增 Number 方法
+|                              |                                                |
+| ---------------------------- | ---------------------------------------------- |
+| obj.toString()：string       | 将对象转为字符串                               |
+| obj.hasOwnProperty():boolean | 判断当前对象自身是否存在指定属性(跟原型链无关) |
+| obj.isPrototypeOf()`         | 测试一个对象是否存在于另一个对象的原型链上     |
+| propertyIsEnumable(属性名称) | 判断一个对象的某个属性是否可枚举               |
 
-ES 6 增加了以下两个 Number 对象的方法：
+## Symbol 对象属性
 
--   Number.isInteger(): 用来判断给定的参数是否为整数。
--   Number.isSafeInteger(): 判断传入的参数值是否是一个"安全整数"。
+- [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol) 说明
 
-Number.isInteger() 在参数是整数时返回 true。
+|                                                              |                           |
+| ------------------------------------------------------------ | ------------------------- |
+| Symbol.length                                                | 长度属性，值为 0。        |
+| [`Symbol.prototype` (en-US)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) | `symbol` 构造函数的原型。 |
 
-JavaScript global全局：JavaScript 全局属性和方法可用于创建Javascript对象。如Array,Date,。。。
+
+
+## Symbol 对象方法
+
+
+
+|                          |                                                              |
+| ------------------------ | ------------------------------------------------------------ |
+| asyncIterator            |                                                              |
+| prototype.description    |                                                              |
+| hasInstance              |                                                              |
+| isConcatSpreadable       |                                                              |
+| iterator()               | 返回迭代器的一个方法                                         |
+| match()                  | 供 String.prototype.match() 函数使用的一个方法，用于比较字符串 |
+| matchAll()               |                                                              |
+| replace()                | 供 String.prototype.replace() 函数使用的一个方法，用于替换子字符串 |
+| search()                 | 供 String.prototype.search() 函数使用的一个方法，用于定位子字符串 |
+| species()                | 用于产生派生对象的构造器                                     |
+| split()                  | 供 String.prototype.split() 函数使用的一个方法，用于分割字符串 |
+| toPrimitive()            | 返回对象所对应的基本类型值的一个方法                         |
+| toStringTag()            | 供 String.prototype.toString() 函数使用的一个方法，用于创建对象的描述信息。 |
+| unscopables()            | 一个对象，该对象的属性指示了哪些属性名不允许被包含在with 语句中 |
+| prototype[@@toPrimitive] |                                                              |
+| for()                    |                                                              |
+| keyFor()                 |                                                              |
+| prototype.toString()     |                                                              |
+| prototype.valueOf()      |                                                              |
+
+## Symbol 对象示例
+
+Symbol.for(key) 和Symbol(desc)类似，都是为了产生一个唯一标识，返回的是Symbol类型的数据
+
+var REACT_ELEMENT_TYPE = Symbol.for('react.element');
+
+不同的是：
+
+- Symbol.for的key相同，就代表是同一个值;
+- Symbol()的desc相同，也不是同一个值；
+
+规则：
+Symbol.for(key)通过key来判断其唯一性，key必须是字符串，
+
+不是字符串的，调用toString()转换为字符串，如果无法转换成字符串的，会报错。
+
+undefined和null 没有toString(),但是不会报错，当做字符串'undefined'和'null'处理。
+
+注意事项:
+
+```js
+//- 1 key不是必须的，默认为字符串undefined
+Symbol.for() === Symbol.for(undefined);
+//输出：true
+
+Symbol.for() === Symbol.for('undefined');
+//输出：true
+
+var obj={};
+Symbol.for() === Symbol.for(obj.dddd);
+//输出：true
+
+console.log(Symbol.for())
+//输出：Symbol(undefined)
+
+//- 2 key为null，则结果和传入字符串null相同-null
+console.log(Symbol.for(null));
+//输出：Symbol(null)
+
+//- 3 key为""，则转换的Symbol的key为空白，和key为空数组相同
+Symbol.for("");
+//输出：Symbol()
+Symbol.for([]);//[].toString()===""
+//输出：Symbol()
+
+//- 4 key为undefined，则结果和传入字符串undefined相同-undefined
+Symbol.for(undefined);
+//输出：Symbol(undefined)
+
+//- 5 key为function，则转换的Symbol的key为代码本身
+var fun=function bb(){console.log('hello')};
+//输出：Symbol(function bb(){console.log('hello')})
+
+//- 6 key为Array，则转换的Symbol的key为调用Array.toString()
+Symbol.for([1,'a',{attr:'attr'}]);
+//输出：Symbol(1,a,[object Object])
+
+[1,'a',{attr:'attr'}].toString()
+//输出："1,a,[object Object]"
+
+
+//- 7 key为对象，则调用toString()转换，如果没有toSting(),则key为[object Object]
+//有toSting()
+Symbol.for({a:1,toString(){return 'hello'}});
+//输出：Symbol(hello)
+
+//toSting()返回数字
+Symbol.for({a:1,toString(){return 111}});
+//输出：Symbol(111)
+
+//没有toString()
+Symbol.for({a:1});
+//输出：Symbol([object Object])
+
+//空对象
+Symbol.for({});
+//输出：Symbol([object Object])
+
+//- 8 key为NaN或Infinity，则转换的Symbol的key为调用Array.toString() - NaN Infinity
+Symbol.for(Infinity);
+//输出：Symbol(Infinity)
+
+Symbol.for(NaN);
+//输出：Symbol(NaN)
+
+//- 9 key为Symbol，报错
+Symbol.for(Symbol.for());
+//输出： Uncaught TypeError: Cannot convert a Symbol value to a string
+```
+
+
 
 ## JavaScript global全局属性
 
@@ -455,3 +686,4 @@ JavaScript global全局：JavaScript 全局属性和方法可用于创建Javascr
 | parseInt()                                                   | 解析一个字符串并返回一个整数。                     |
 | String()                                                     | 把对象的值转换为字符串。                           |
 | [unescape()](https://www.runoob.com/jsref/jsref-unescape.html) | 对由 escape() 编码的字符串进行解码。               |
+

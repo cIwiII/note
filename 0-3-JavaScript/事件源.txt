@@ -1,6 +1,0 @@
-
-this：绑定事件的元素
-
-event.currentTarget：获取绑定事件的元素
-
-event.target：触发事件的元素

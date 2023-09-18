@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分片上传</title>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- 地址： https://juejin.cn/post/7177045936298786872 -->
 </head>
 
 <body>
@@ -34,7 +35,8 @@
     /** 
      * 创建切片，大小单位kb（1M = 1*1024*1024）
      * 核心思想：切为指定大小的数组，
-     * 返回数组，数组长度即使请求个数,预计分成8个
+     * 返回数组，数组长度即是请求个数,预计分成8个
+     * 两个形参：files是大文件，size是切片的大小，单位kb，
      */
     function createChunk(files, size = 10 * 1024 * 1024) {
       const chunkList = []

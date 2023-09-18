@@ -82,3 +82,25 @@ plugins:[
 ],
 ```
 
+
+
+
+
+打包移除console
+
+```js
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: {
+                    warnings: false,
+                    // 打包的时候移除console、debugger
+                    drop_debugger: true, // 移除debugger
+                    drop_console: true, // 移除console
+                    pure_funcs: ['console.log','console.info']
+                }
+            },
+            sourceMap: config.build.productionSourceMap,
+            parallel: true
+        }),
+```
+
