@@ -14,9 +14,7 @@ export function copyText(value: string): boolean{
   let isCopySuccess = false;
   const input = document.createElement('input');
   document.body.appendChild(input);
-  input.style.position = 'fixed';
-  input.style.clip = 'rect(0 0 0 0)';//clip弃用
-  input.style.top = '10px';
+  input.style.display = 'none';
   input.value = value;
   input.select(); //选择对象
   // 浏览器复制命令，execCommand兼容
